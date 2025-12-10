@@ -8,6 +8,7 @@ export function useMiniApp() {
   const {user, error, authLoading} = useMiniAppAuth(tgData); // 3. Auth
 
   const uiLoading = !tgData || safeTop === null;  // UI загрузка
+  console.log('TG_DATA:::::::::::::::::::', tgData)
 
   return {
     tgData,
