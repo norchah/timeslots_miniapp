@@ -1,14 +1,24 @@
 import {useMiniApp} from "./hooks/useMiniApp.js";
 import {pages} from "./pages/pages.js";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 
 export default function App() {
   const {tgData, user, safeTop, safeBottom, loading, error} = useMiniApp();
   const [page, setPage] = useState('home');
+  const [data, setData] = useState();
 
   // Находим нужный компонент
   const PageComponent = pages[page] ?? pages.home;
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.Telegram?.WebApp) {
+      const tgWebApp = window.Telegram.WebApp;
+
+      setData(tgWebApp);
+      console.log(data)
+    }
+  }, []);
 
 
   // Показываем лоадер, пока не готовы tgData или user
