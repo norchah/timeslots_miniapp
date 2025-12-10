@@ -11,20 +11,16 @@ export default function App() {
   // Находим нужный компонент
   const PageComponent = pages[page] ?? pages.home;
 
-  useEffect(() => {
-    console.log("window.Telegram:", window.Telegram);
-    console.log("window.Telegram.WebApp:", window.Telegram?.WebApp);
-  }, [window.Telegram?.WebApp]);
 
 
   // Показываем лоадер, пока не готовы tgData или user
-  // if (!tgData || safeTop === null || loading) {
-  //   return (
-  //     <div className="bg-slate-800 text-white h-screen flex items-center justify-center">
-  //       <h1>Loading...</h1>
-  //     </div>
-  //   );
-  // }
+  if (!tgData || safeTop === null || loading) {
+    return (
+      <div className="bg-slate-800 text-white h-screen flex items-center justify-center">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
   // Ошибка
   if (error) {
