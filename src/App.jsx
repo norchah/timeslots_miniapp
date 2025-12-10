@@ -9,7 +9,7 @@ export default function App() {
   const [data, setData] = useState();
 
   // Находим нужный компонент
-  const PageComponent = pages[page] ?? pages.home;
+  const PageComponent = pages[page];
 
 
   // Показываем лоадер, пока не готовы tgData или user
@@ -32,12 +32,13 @@ export default function App() {
 
   return (
     <div
-      className="m-auto max-w-[456px] flex flex-col items-center justify-center outline mt-[35px]"
+      className="m-auto max-w-[456px] flex flex-col items-center justify-center outline"
       style={{paddingTop: `${safeTop}px`, paddingBottom: `${safeBottom}px`}}
     >
       <h1>Добро пожаловать в TimeSlots</h1>
-      <p>safe Bottom: {safeBottom}</p>
+      <p>safe Bottom: {safeBottom}</p >
       <p>safe Top: {safeTop}</p>
+      <button onClick={() => {setPage('settings')}}>settings</button>
 
       <PageComponent navigate={setPage}/>
 
