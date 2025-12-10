@@ -40,6 +40,8 @@ export default function App() {
       style={{paddingTop: `${safeTop}px`, paddingBottom: `${safeBottom}px`}}
     >
       <h1>Добро пожаловать в TimeSlots</h1>
+      <p>safe Bottom: {safeBottom}</p>
+      <p>safe Top: {safeTop}</p>
 
       <PageComponent navigate={setPage}/>
 
