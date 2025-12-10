@@ -36,7 +36,7 @@ export default function App() {
 
   return (
     <div
-      className="m-auto max-w-[456px] flex flex-col items-center justify-center outline pt-5"
+      className="m-auto max-w-[456px] flex flex-col items-center justify-center outline mt-[20px]"
       style={{paddingTop: `${safeTop}px`, paddingBottom: `${safeBottom}px`}}
     >
       <h1>Добро пожаловать в TimeSlots</h1>
