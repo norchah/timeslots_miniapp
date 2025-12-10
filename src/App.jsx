@@ -11,6 +11,9 @@ export default function App() {
   // Находим нужный компонент
   const PageComponent = pages[page] ?? pages.home;
 
+  console.log("TOP::::::::::::::::::::::", safeTop);
+  console.log("BOTTOM::::::::::::::::::::::", safeBottom);
+
 
 
   // Показываем лоадер, пока не готовы tgData или user
