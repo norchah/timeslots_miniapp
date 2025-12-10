@@ -12,13 +12,9 @@ export default function App() {
   const PageComponent = pages[page] ?? pages.home;
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.Telegram?.WebApp) {
-      const tgWebApp = window.Telegram.WebApp;
-
-      setData(tgWebApp);
-      console.log(data)
-    }
-  }, []);
+    console.log("window.Telegram:", window.Telegram);
+    console.log("window.Telegram.WebApp:", window.Telegram?.WebApp);
+  }, [window.Telegram?.WebApp]);
 
 
   // Показываем лоадер, пока не готовы tgData или user
