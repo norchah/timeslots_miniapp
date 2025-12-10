@@ -4,16 +4,12 @@ import {useEffect, useState} from "react";
 
 
 export default function App() {
-  const {tgData, user, safeTop, safeBottom, safeContentTop, safeContentBottom, loading, error} = useMiniApp();
+  const {tgData, user, safeTop, safeBottom, loading, error} = useMiniApp();
   const [page, setPage] = useState('home');
   const [data, setData] = useState();
 
   // Находим нужный компонент
   const PageComponent = pages[page] ?? pages.home;
-
-  console.log("TOP::::::::::::::::::::::", safeTop);
-  console.log("BOTTOM::::::::::::::::::::::", safeBottom);
-
 
 
   // Показываем лоадер, пока не готовы tgData или user
@@ -42,8 +38,6 @@ export default function App() {
       <h1>Добро пожаловать в TimeSlots</h1>
       <p>safe Bottom: {safeBottom}</p>
       <p>safe Top: {safeTop}</p>
-      <p>content safe Bottom: {safeContentTop}</p>
-      <p>content safe Top: {safeContentBottom}</p>
 
       <PageComponent navigate={setPage}/>
 

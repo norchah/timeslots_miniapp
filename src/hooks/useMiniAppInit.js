@@ -3,8 +3,6 @@ import {useEffect, useState} from "react";
 export function useMiniAppInit(tgData) {
   const [safeTop, setSafeTop] = useState(null);
   const [safeBottom, setSafeBottom] = useState(null);
-  const [safeContentTop, setSafeContentTop] = useState(null);
-  const [safeContentBottom, setSafeContentBottom] = useState(null);
 
   useEffect(() => {
     if (!tgData) return;
@@ -13,7 +11,7 @@ export function useMiniAppInit(tgData) {
     if (tgData.platform !== "tdesktop") {
       tgData.disableVerticalSwipes?.();
       tgData.lockOrientation?.();
-      tgData.requestFullscreen?.();
+      // tgData.requestFullscreen?.();
     }
 
     // Telegram требует ready() прежде чем отдаст корректные safeAreaInset
@@ -23,14 +21,9 @@ export function useMiniAppInit(tgData) {
     requestAnimationFrame(() => {
       const top = tgData.safeAreaInset?.top ?? 0;
       const bottom = tgData.safeAreaInset?.bottom ?? 0;
-      const contentTop = tgData.contentSafeAreaInset?.top ?? 0;
-      const contentBottom = tgData.contentSafeAreaInset?.bottom ?? 0;
 
       setSafeTop(top);
       setSafeBottom(bottom);
-      setSafeContentTop(contentTop);
-      setSafeContentBottom(contentBottom);
-
 
     });
 
@@ -38,11 +31,9 @@ export function useMiniAppInit(tgData) {
     tgData.onEvent("viewportChanged", () => {
       setSafeTop(tgData.safeAreaInset?.top ?? 0);
       setSafeBottom(tgData.safeAreaInset?.bottom ?? 0);
-      setSafeContentTop(tgData.contentSafeAreaInset?.top ?? 0)
-      setSafeContentBottom(tgData.contentSafeAreaInset?.bottom ?? 0)
     });
 
   }, [tgData]);
 
-  return {safeTop, safeBottom, safeContentTop, safeContentBottom};
+  return {safeTop, safeBottom};
 }
