@@ -1,11 +1,15 @@
 import {useMiniApp} from "./hooks/useMiniApp.js";
-import {renderPageByKey} from "./pages/pages.js";
+import {pages} from "./pages/pages.js";
 import {useState} from "react";
 
 
 export default function App() {
   const {tgData, user, safeTop, safeBottom, loading, error} = useMiniApp();
   const [page, setPage] = useState('home');
+
+  // Находим нужный компонент
+  const PageComponent = pages[page] ?? pages.home;
+
 
   // Показываем лоадер, пока не готовы tgData или user
   if (!tgData || safeTop === null || loading) {
@@ -31,7 +35,9 @@ export default function App() {
       style={{paddingTop: `${safeTop}px`, paddingBottom: `${safeBottom}px`}}
     >
       <h1>Добро пожаловать в TimeSlots</h1>
-      <div className="mt-6 outline">{renderPageByKey(page)}</div>
+
+      <PageComponent navigate={setPage}/>
+
     </div>
   )
 }
