@@ -1,25 +1,37 @@
-import {useState} from 'react'
-import reactLogo from './assets/react.svg'
+import {useMiniApp} from "./hooks/useMiniApp.js";
+import {renderPageByKey} from "./pages/pages.js";
+import {useState} from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+
+export default function App() {
+  const {tgData, user, safeTop, safeBottom, loading, error} = useMiniApp();
+  const [page, setPage] = useState('home');
+
+  // Показываем лоадер, пока не готовы tgData или user
+  if (!tgData || safeTop === null || loading) {
+    return (
+      <div className="bg-slate-800 text-white h-screen flex items-center justify-center">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
+  // Ошибка
+  if (error) {
+    return (
+      <div className="bg-slate-800 text-white h-screen flex items-center justify-center">
+        <h1>Error: {error}</h1>
+      </div>
+    );
+  }
 
   return (
-    <div className="w-full mr-5 ml-5 flex flex-col items-center justify-center h-full">
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div
+      className="m-auto max-w-[456px] flex flex-col items-center justify-center outline"
+      style={{paddingTop: `${safeTop}px`, paddingBottom: `${safeBottom}px`}}
+    >
+      <h1>Добро пожаловать в TimeSlots</h1>
+      <div className="mt-6 outline">{renderPageByKey(page)}</div>
     </div>
   )
 }
-
-export default App
