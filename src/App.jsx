@@ -12,13 +12,13 @@ export default function App() {
 
 
   // Показываем лоадер, пока не готовы tgData или user
-  if (!tgData || safeTop === null || loading) {
-    return (
-      <div className="bg-slate-800 text-white h-screen flex items-center justify-center">
-        <h1>Loading...</h1>
-      </div>
-    );
-  }
+  // if (!tgData || safeTop === null || loading) {
+  //   return (
+  //     <div className="bg-slate-800 text-white h-screen flex items-center justify-center">
+  //       <h1>Loading...</h1>
+  //     </div>
+  //   );
+  // }
 
   // Ошибка
   if (error) {
