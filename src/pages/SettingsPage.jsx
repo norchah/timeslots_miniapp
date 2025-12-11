@@ -13,7 +13,7 @@ export default function SettingsPage({navigate, tgData, user, safeTop, safeBotto
       <header className="outline outline-red-400">
         <h1 className='text-2xl'>Настройки</h1>
       </header>
-      <main className="outline outline-pink-500">
+      <main className="outline outline-pink-500 w-full">
         <p>Пользователь:</p>
         <div className="flex items-center justify-center flex-col outline outline-sky-400">
           <img className='w-[80px] h-[80px] rounded-full' src={photoUrl} alt='avatar'/>
