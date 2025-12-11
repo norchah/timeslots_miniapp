@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import {UserApi} from "../api/userApi.js";
+import {AuthApi} from "../api/authApi.js";
 
 
 export function useMiniAppAuth(tgData) {
@@ -19,7 +19,7 @@ export function useMiniAppAuth(tgData) {
           return;
         }
 
-        const api = new UserApi();
+        const api = new AuthApi();
         const response = await api.login(tgData.initData);
 
         setUser(response);
