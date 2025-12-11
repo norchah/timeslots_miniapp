@@ -7,12 +7,6 @@ export default function HomePage({navigate, tgData, user, safeTop, safeBottom}) 
       <h1>Добро пожаловать в TimeSlots</h1>
       <p>safe Bottom: {safeBottom}</p>
       <p>safe Top: {safeTop}</p>
-      {user && (
-        <p className="mt-2 text-white">
-          Пользователь:
-          <pre>{JSON.stringify(user, null, 2)}</pre>
-        </p>
-      )}
 
       {/* Универсальная карточка */}
       <Card navigate={navigate} page="settings">
@@ -24,13 +18,6 @@ export default function HomePage({navigate, tgData, user, safeTop, safeBottom}) 
         Профиль
       </Card>
 
-      {/* Старая кнопка для примера */}
-      <button
-        className="w-[60px] h-[40px] rounded-xl bg-sky-600 mt-2"
-        onClick={() => navigate("settings")}
-      >
-        settings
-      </button>
     </div>
   );
 }

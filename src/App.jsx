@@ -15,7 +15,7 @@ export default function App() {
   if (loading || !tgData || !user || safeTop === null || safeBottom === null) {
     return (
       <div className="bg-slate-800 text-white h-screen flex items-center justify-center">
-        <h1>Loading...</h1>
+        <h1>Загрузка...</h1>
       </div>
     );
   }
