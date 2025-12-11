@@ -9,7 +9,8 @@ export default function HomePage({navigate, tgData, user, safeTop, safeBottom}) 
       <p>safe Top: {safeTop}</p>
       {user && (
         <p className="mt-2 text-white">
-          Привет, {user.first_name} {user.last_name}
+          Пользователь:
+          <pre>{JSON.stringify(user, null, 2)}</pre>
         </p>
       )}
 
