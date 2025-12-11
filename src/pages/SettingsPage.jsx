@@ -15,7 +15,6 @@ export default function SettingsPage({navigate, tgData, user, safeTop, safeBotto
       <p>{user.username}</p>
       <p>{user.firstName}</p>
       <p>{user.lastName}</p>
-      <p>{user.photoUrl}</p>
       <p>{user.displayName}</p>
       <p>{user.displayLastname}</p>
     </div>
