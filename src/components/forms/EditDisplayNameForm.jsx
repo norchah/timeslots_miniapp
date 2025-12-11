@@ -42,7 +42,7 @@ export default function EditDisplayNameForm({user, onSubmit}) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 p-4 bg-white/50 backdrop-blur-md rounded-2xl w-full max-w-[420px]"
+      className="flex flex-col gap-4 p-4 w-full max-w-[420px]"
     >
       <h2 className="text-xl font-semibold text-gray-800">
         Изменить отображаемые данные
