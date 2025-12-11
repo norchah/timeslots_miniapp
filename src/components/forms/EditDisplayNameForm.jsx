@@ -53,7 +53,7 @@ export default function EditDisplayNameForm({user, onSubmit}) {
         value={values.displayName}
         error={errors.displayName}
         onChange={(val) => setField("displayName", val)}
-        // placeholder="Ваше новое имя"
+        placeholder="Ваше Имя"
       />
 
       <TextInput
@@ -61,7 +61,7 @@ export default function EditDisplayNameForm({user, onSubmit}) {
         value={values.displayLastname}
         error={errors.displayLastname}
         onChange={(val) => setField("displayLastname", val)}
-        placeholder="Ваша новая фамилия"
+        placeholder="Ваша Фамилия"
       />
 
       <button
