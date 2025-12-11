@@ -33,7 +33,13 @@ export default function App() {
       className="m-auto max-w-[456px] flex flex-col items-center justify-center mt-[35px]"
       style={{paddingTop: `${safeTop}px`, paddingBottom: `${safeBottom}px`}}
     >
-      <PageComponent navigate={setPage} user={user} safeTop={safeTop} safeBottom={safeBottom} />
+      <PageComponent
+        navigate={setPage}
+        tgData={tgData}
+        user={user}
+        safeTop={safeTop}
+        safeBottom={safeBottom}
+      />
     </div>
   )
 }

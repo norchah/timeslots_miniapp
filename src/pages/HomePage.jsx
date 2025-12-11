@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from "../components/cards/card.jsx";
 
-export default function HomePage({navigate, user, safeTop, safeBottom}) {
+export default function HomePage({navigate, tgData, user, safeTop, safeBottom}) {
   return (
     <div style={{paddingTop: safeTop, paddingBottom: safeBottom}}>
       <h1>Добро пожаловать в TimeSlots</h1>
