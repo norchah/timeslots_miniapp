@@ -4,7 +4,7 @@ import {useTelegramNavigation} from "../hooks/useTelegramNavigation.js";
 export default function SettingsPage({navigate, tgData, user, safeTop, safeBottom}) {
   useTelegramNavigation(tgData, {backPage: 'home', navigate})
 
-  const user_photo_url = {user.photoUrl}
+  const user_photo_url = user.photoUrl
 
   return (
     <div>
