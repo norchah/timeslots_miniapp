@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from "../components/cards/card.jsx";
 import {useTelegramNavigation} from "../hooks/useTelegramNavigation.js";
-import ButtonMain from "../components/buttons/buttonMain.js";
+import ButtonMain from "../components/buttons/buttonMain.jsx";
 
 
 export default function HomePage({navigate, tgData, user, safeTop, safeBottom}) {

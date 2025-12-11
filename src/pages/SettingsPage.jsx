@@ -3,7 +3,7 @@ import {useTelegramNavigation} from "../hooks/useTelegramNavigation.js";
 import {getUserDisplayData} from "../utils/utils.js";
 import EditDisplayNameForm from "../components/forms/EditDisplayNameForm.jsx";
 import UserApi from "../api/userApi.js";
-import ButtonMain from "../components/buttons/buttonMain.js";
+import ButtonMain from "../components/buttons/buttonMain.jsx";
 
 
 export default function SettingsPage({navigate, tgData, user, safeTop, safeBottom}) {
