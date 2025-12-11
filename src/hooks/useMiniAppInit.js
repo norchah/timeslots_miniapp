@@ -31,8 +31,8 @@ export function useMiniAppInit(tgData) {
 
     // Скрываем MainButton и включаем подтверждение закрытия
     tgData.MainButton.hide?.();
-    // tgData.enableClosingConfirmation?.();
-    tgData.isClosingConfirmationEnabled = true;
+    tgData.enableClosingConfirmation?.();
+    // tgData.isClosingConfirmationEnabled = true;
 
     // Даем Telegram кадр, чтобы safeArea применился
     requestAnimationFrame(() => {
