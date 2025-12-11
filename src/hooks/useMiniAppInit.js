@@ -11,7 +11,7 @@ export function useMiniAppInit(tgData) {
     if (tgData.platform !== "tdesktop") {
       tgData.disableVerticalSwipes?.();
       tgData.lockOrientation?.();
-      // tgData.requestFullscreen?.();
+      tgData.requestFullscreen?.();
     }
 
     // Telegram требует ready() прежде чем отдаст корректные safeAreaInset
