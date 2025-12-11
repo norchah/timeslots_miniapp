@@ -9,11 +9,12 @@ export default function SettingsPage({navigate, tgData, user, safeTop, safeBotto
     <div>
       <h1>Настройки</h1>
       <p>{user.username}</p>
-      <p>{user.first_name}</p>
-      <p>{user.last_name}</p>
-      {/*<p>{user.photo_url}</p>*/}
-      {/*<p>{user.display_name}</p>*/}
-      {/*<p>{user.display_lastname}</p>*/}
+      <p>{user.firstName}</p>
+      <p>{user.lastName}</p>
+      <p>{user.photoUrl}</p>
+      <p>{user.displayName}</p>
+      <p>{user.displayLastname}</p>
+      <p>{user.displayPhoto}</p>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import {useMiniApp} from "./hooks/useMiniApp.js";
 import {pages} from "./pages/pages.js";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 
 export default function App() {
