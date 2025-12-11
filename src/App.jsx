@@ -12,7 +12,7 @@ export default function App() {
 
   useEffect(() => {
     console.log('USER APP:::::::::::::', user)
-  }, [user])
+  }, [tgData])
 
 
   // Показываем лоадер, пока не готовы tgData или user
