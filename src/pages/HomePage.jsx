@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from "../components/cards/card.jsx";
 import {useTelegramNavigation} from "../hooks/useTelegramNavigation.js";
+import ButtonMain from "../components/buttons/buttonMain.js";
 
 
 export default function HomePage({navigate, tgData, user, safeTop, safeBottom}) {
@@ -12,14 +13,14 @@ export default function HomePage({navigate, tgData, user, safeTop, safeBottom}) 
       <p>safe Top: {safeTop}</p>
 
       {/* Универсальная карточка */}
-      <Card navigate={navigate} page="settings">
+      <ButtonMain navigate={navigate} page="settings">
         Настройки
-      </Card>
+      </ButtonMain>
 
       {/* Можно ещё одну */}
-      <Card navigate={navigate} page="users">
+      <ButtonMain navigate={navigate} page="users">
         Пользователи
-      </Card>
+      </ButtonMain>
 
     </div>
   );

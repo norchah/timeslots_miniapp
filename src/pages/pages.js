@@ -3,6 +3,7 @@ import UsersPage from "./UsersPages.jsx";
 import ProfiPage from "./ProfiPage.jsx";
 import HomePage from "./HomePage.jsx";
 import SettingsPage from "./SettingsPage.jsx";
+import BecomeProfi from "./BecomeProfi.jsx";
 
 // Словарь всех страниц по ключу (card.href)
 export const pages = {
@@ -10,4 +11,5 @@ export const pages = {
   users: UsersPage,
   profi: ProfiPage,
   settings: SettingsPage,
+  becomeProfi: BecomeProfi,
 };

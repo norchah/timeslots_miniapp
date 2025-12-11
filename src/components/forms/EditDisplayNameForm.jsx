@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {TextInput} from "./inputs/textInput.jsx";
+import ButtonMain from "../buttons/buttonMain.js";
 
 export default function EditDisplayNameForm({user, onSubmit}) {
   const [values, setValues] = useState({
@@ -63,17 +64,7 @@ export default function EditDisplayNameForm({user, onSubmit}) {
         onChange={(val) => setField("displayLastname", val)}
         placeholder="Ваша Фамилия"
       />
-
-      <button
-        type="submit"
-        className="
-          mt-2 py-2 rounded-xl bg-blue-500 text-white
-          font-medium transition-all
-          active:scale-[0.97]
-        "
-      >
-        Сохранить
-      </button>
+      <ButtonMain type="submit">Сохранить</ButtonMain>
     </form>
   );
 }

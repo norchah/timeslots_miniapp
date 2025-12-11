@@ -3,12 +3,12 @@ import {useTelegramNavigation} from "../hooks/useTelegramNavigation.js";
 import {getUserDisplayData} from "../utils/utils.js";
 import EditDisplayNameForm from "../components/forms/EditDisplayNameForm.jsx";
 import UserApi from "../api/userApi.js";
+import ButtonMain from "../components/buttons/buttonMain.js";
 
 
 export default function SettingsPage({navigate, tgData, user, safeTop, safeBottom}) {
   useTelegramNavigation(tgData, {backPage: 'home', navigate})
   const {username, name, lastname, photoUrl} = getUserDisplayData(user)
-
 
   async function saveNames(values) {
     try {
@@ -28,7 +28,6 @@ export default function SettingsPage({navigate, tgData, user, safeTop, safeBotto
     }
   }
 
-
   return (
     <div className="outline flex flex-col justify-center items-center w-full">
       <header className="outline outline-red-400">
@@ -42,13 +41,13 @@ export default function SettingsPage({navigate, tgData, user, safeTop, safeBotto
           <p>Имя: {name}</p>
           <p>Фамилия: {lastname}</p>
           <EditDisplayNameForm user={user} onSubmit={saveNames}/>
-          <button
-            type="button"
-            className="
-              mt-2 p-2 rounded-xl bg-blue-500 text-white
-              font-medium transition-all active:scale-[0.97]"
+          <ButtonMain
+            navigate={navigate}
+            page={'becomeProfi'}
+            tgData={tgData}
+            user={user}
           >Начать предоставлять услуги
-          </button>
+          </ButtonMain>
         </div>
       </main>
     </div>
