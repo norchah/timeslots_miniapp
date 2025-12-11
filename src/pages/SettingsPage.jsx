@@ -4,19 +4,26 @@ import {useTelegramNavigation} from "../hooks/useTelegramNavigation.js";
 export default function SettingsPage({navigate, tgData, user, safeTop, safeBottom}) {
   useTelegramNavigation(tgData, {backPage: 'home', navigate})
 
-  const user_photo_url = user.photoUrl
+  function getText(text) {
+    if (text === null || text === "") {
+      return 'Пусто'
+    } else {
+      return text
+    }
+  }
 
   return (
     <div>
-      <h1>Настройки</h1>
+      <h1 className='text-lg'>Настройки</h1>
       <p>Пользователь:</p>
-      <img className='w-[60px] h-[60px] rounded-full' src={user.photoUrl} alt='avatar'/>
-      <img className='w-[60px] h-[60px] rounded-full' src={user_photo_url} alt='avatar'/>
-      <p>{user.username}</p>
-      <p>{user.firstName}</p>
-      <p>{user.lastName}</p>
-      <p>{user.displayName}</p>
-      <p>{user.displayLastname}</p>
+      <div className="flex flex-col jusify-bettwen align-center">
+        <img className='w-[80px] h-[80px] rounded-full' src={user.photoUrl} alt='avatar'/>
+        <p>Имя пользователя: getText({user.username})</p>
+        <p>Имя из телеграма: getText({user.firstName})</p>
+        <p>Фамилия из телеграма: getText({user.lastName})</p>
+        <p>Отображаемое имя в приложении: getText({user.displayName})</p>
+        <p>Отображаемая фамилия в приложении: getText({user.displayLastname})</p>
+      </div>
     </div>
   );
 }
