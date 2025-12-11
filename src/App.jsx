@@ -31,7 +31,7 @@ export default function App() {
 
   return (
     <div
-      className="m-auto max-w-[456px] flex flex-col items-center justify-center mt-[40px] outline"
+      className="m-auto max-w-[456px] flex flex-col items-center justify-center mt-[40px] outline py-2"
       style={{paddingTop: `${safeTop}px`, paddingBottom: `${safeBottom}px`}}
     >
       <PageComponent
