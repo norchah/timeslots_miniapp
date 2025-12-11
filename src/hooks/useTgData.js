@@ -9,6 +9,7 @@ export function useTgData() {
 
       setTgData(tgWebApp);
     }
+    console.log('useTgData::::::::', tgData)
   }, []);
 
   return {tgData}; // возвращаем все поля + source
