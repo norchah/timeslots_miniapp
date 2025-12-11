@@ -33,8 +33,7 @@ export function useMiniAppAuth(tgData) {
     }
 
     login();
-    console.log('useMiniAppAuth::::user::::', user);
   }, [tgData]);
-
+  console.log('useMiniAppAuth::::user::::', user);
   return {user, error, authLoading};
 }

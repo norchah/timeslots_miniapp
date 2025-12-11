@@ -10,11 +10,6 @@ export default function App() {
   // Находим нужный компонент
   const PageComponent = pages[page];
 
-  useEffect(() => {
-    console.log('USER APP:::::::::::::', user)
-  }, [tgData])
-
-
   // Показываем лоадер, пока не готовы tgData или user
   if (!tgData || safeTop === null || loading) {
     return (
