@@ -1,15 +1,29 @@
 import React from 'react';
-import {useMiniApp} from "../hooks/useMiniApp.js";
+import Card from "../components/cards/card.jsx";
 
-export default function HomePage({ navigate, user, safeTop, safeBottom }) {
+export default function HomePage({navigate, user, safeTop, safeBottom}) {
   return (
-    <div>
+    <div style={{paddingTop: safeTop, paddingBottom: safeBottom}}>
       <h1>Добро пожаловать в TimeSlots</h1>
       <p>safe Bottom: {safeBottom}</p>
       <p>safe Top: {safeTop}</p>
-      <button className='w-[60px] h-[40px] rounded-xl bg-sky-600' onClick={() => {
-        navigate('settings')
-      }}>settings
+
+      {/* Универсальная карточка */}
+      <Card navigate={navigate} page="settings">
+        Настройки
+      </Card>
+
+      {/* Можно ещё одну */}
+      <Card navigate={navigate} page="profile">
+        Профиль
+      </Card>
+
+      {/* Старая кнопка для примера */}
+      <button
+        className="w-[60px] h-[40px] rounded-xl bg-sky-600 mt-2"
+        onClick={() => navigate("settings")}
+      >
+        settings
       </button>
     </div>
   );
