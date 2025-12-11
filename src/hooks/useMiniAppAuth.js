@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import {UserApi} from "../../api/userApi.js";
+import {UserApi} from "../api/userApi.js";
 
 
 export function useMiniAppAuth(tgData) {
