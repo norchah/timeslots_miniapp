@@ -8,27 +8,29 @@ export function useTelegramNavigation(tgData, { backPage, navigate }) {
     tgData.MainButton.hide?.();
 
     if (backPage) {
-      // показываем кнопку "Назад"
+      // кнопка "Назад"
       tgData.BackButton.show();
       tgData.BackButton.onClick(() => {
         navigate(backPage);
       });
     } else {
-      // на главной странице кнопка назад не нужна
+      // главная страница — кнопка назад не нужна
       tgData.BackButton.hide?.();
 
-      // назначаем пользовательскую логику для закрытия
-      const confirmClose = () => {
-        if (window.confirm("Вы точно хотите закрыть мини-приложение?")) {
+      // Подтверждение закрытия через alert
+      const handleClose = () => {
+        if (window.confirm("Закрыть приложение?")) {
           tgData.close();
         }
       };
 
-      // можно повесить на жест swipe-down или просто на крестик сверху
-      tgData.onEvent("back", confirmClose);
-      // Если нужно, можно назначить MainButton для закрытия:
-      // tgData.MainButton.setText("Закрыть");
-      // tgData.MainButton.onClick(confirmClose);
+      // Можно повесить на крестик сверху, если есть swipe-back:
+      tgData.onEvent("back", handleClose);
+
+      // Или назначить кнопку MainButton для закрытия
+      tgData.MainButton.setText("Закрыть");
+      tgData.MainButton.show();
+      tgData.MainButton.onClick(handleClose);
     }
 
     return () => {
