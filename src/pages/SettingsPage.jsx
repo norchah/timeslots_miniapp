@@ -9,7 +9,7 @@ export default function SettingsPage({navigate, tgData, user, safeTop, safeBotto
 
 
   return (
-    <div>
+    <div className="outline">
       <h1 className='text-l align-center'>Настройки</h1>
       <p>Пользователь:</p>
       <div className="flex items-center justify-center flex-col">
