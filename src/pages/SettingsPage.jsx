@@ -1,28 +1,22 @@
 import React from 'react';
 import {useTelegramNavigation} from "../hooks/useTelegramNavigation.js";
+import {getDisplayText, getNormalText, getUserDisplayData} from "../utils/utils.js";
+
 
 export default function SettingsPage({navigate, tgData, user, safeTop, safeBottom}) {
   useTelegramNavigation(tgData, {backPage: 'home', navigate})
+  const {username, name, lastname, photoUrl} = getUserDisplayData(user)
 
-  function getText(text) {
-    if (text === null || text === "") {
-      return 'Пусто'
-    } else {
-      return text
-    }
-  }
 
   return (
     <div>
-      <h1 className='text-l'>Настройки</h1>
+      <h1 className='text-l align-center'>Настройки</h1>
       <p>Пользователь:</p>
       <div className="flex items-center justify-center flex-col">
-        <img className='w-[80px] h-[80px] rounded-full' src={user.photoUrl} alt='avatar'/>
-        <p>Имя пользователя: {getText(user.username)}</p>
-        <p>Имя из телеграма: {getText(user.firstName)}</p>
-        <p>Фамилия из телеграма: {getText(user.lastName)}</p>
-        <p>Отображаемое имя в приложении: {getText(user.displayName)}</p>
-        <p>Отображаемая фамилия в приложении: {getText(user.displayLastname)}</p>
+        <img className='w-[80px] h-[80px] rounded-full' src={photoUrl} alt='avatar'/>
+        <p>Имя пользователя: {username}</p>
+        <p>Имя из телеграма: {name}</p>
+        <p>Фамилия из телеграма: {lastname}</p>
       </div>
     </div>
   );
