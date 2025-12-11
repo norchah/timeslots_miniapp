@@ -1,9 +1,9 @@
 export function getUserDisplayData(user) {
   // Username: displayName > username > "user+id"
-  const username = user.displayName || user.username || `user${user.id}`;
+  const username = user.username || `user${user.id}`;
 
   // Имя: имя пользователя (custom) > имя из Telegram > ""
-  const name = user.firstName || username || "User";
+  const name = user.displayName || user.firstName || "User";
 
   // Фамилия: custom lastname > lastname из Telegram > ""
   const lastname = user.displayLastname || user.lastName || "";
