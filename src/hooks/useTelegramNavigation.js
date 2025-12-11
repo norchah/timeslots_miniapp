@@ -1,34 +1,34 @@
-import { useEffect } from "react";
+import {useEffect} from "react";
 
 /**
- * Хук для настройки кнопки назад и подтверждения закрытия
- * @param tgData - window.Telegram.WebApp
- * @param backPage - страница, на которую возвращаемся
- * @param navigate - функция навигации
+ * Хук для управления кнопкой "Назад" и подтверждением закрытия
+ *
+ * @param {Telegram.WebApp} tgData - объект Telegram WebApp
+ * @param {Object} options
+ * @param {string|null} options.backPage - страница, на которую возвращаемся при нажатии BackButton
+ * @param {Function} options.navigate - функция навигации по страницам
  */
-export function useTelegramNavigation(tgData, { backPage, navigate }) {
+export function useTelegramNavigation(tgData, {backPage, navigate}) {
   useEffect(() => {
     if (!tgData) return;
 
-    // Всегда скрываем MainButton по умолчанию
+    // Всегда скрываем MainButton (для безопасности)
     tgData.MainButton.hide?.();
 
-    // включаем подтверждение закрытия мини-приложения
+    // Включаем подтверждение закрытия мини-приложения
     tgData.enableClosingConfirmation?.();
 
     if (backPage) {
-      // показываем кнопку "Назад"
+      // Показываем кнопку "Назад" и назначаем обработчик
       tgData.BackButton.show();
-      tgData.BackButton.onClick(() => {
-        navigate(backPage);
-      });
+      const handleBack = () => navigate(backPage);
+      tgData.BackButton.onClick(handleBack);
+
+      // Чистим обработчик при размонтировании
+      return () => tgData.BackButton.offClick(handleBack);
     } else {
-      // на главной странице скрываем кнопку назад
+      // Если backPage нет, скрываем кнопку "Назад"
       tgData.BackButton.hide?.();
     }
-
-    return () => {
-      tgData.BackButton.offClick?.();
-    };
   }, [tgData, backPage, navigate]);
 }

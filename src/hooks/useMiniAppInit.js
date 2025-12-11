@@ -1,5 +1,17 @@
 import {useEffect, useState} from "react";
 
+/**
+ * Хук для инициализации Telegram WebApp
+ * - Подключается к tgData
+ * - Настраивает safeAreaInsets (top/bottom)
+ * - Блокирует вертикальные свайпы и фиксирует ориентацию (не для desktop)
+ * - Запрашивает fullscreen
+ * - Скрывает MainButton
+ * - Включает подтверждение закрытия мини-приложения
+ *
+ * @param {Telegram.WebApp} tgData - объект Telegram WebApp
+ * @returns {{safeTop: number|null, safeBottom: number|null}} - safeAreaInsets для верстки
+ */
 export function useMiniAppInit(tgData) {
   const [safeTop, setSafeTop] = useState(null);
   const [safeBottom, setSafeBottom] = useState(null);
@@ -7,32 +19,37 @@ export function useMiniAppInit(tgData) {
   useEffect(() => {
     if (!tgData) return;
 
-    // Блокируем свайпы и режимы (не обязательно, но норм)
+    // Блокируем вертикальные свайпы и фиксируем ориентацию на мобильных
     if (tgData.platform !== "tdesktop") {
       tgData.disableVerticalSwipes?.();
       tgData.lockOrientation?.();
       tgData.requestFullscreen?.();
     }
 
-    // Telegram требует ready() прежде чем отдаст корректные safeAreaInset
+    // Telegram требует вызвать ready() перед доступом к safeAreaInset
     tgData.ready();
 
-    // Даем Telegram один кадр чтобы применить инициализацию
+    // Скрываем MainButton и включаем подтверждение закрытия
+    tgData.MainButton.hide?.();
+    tgData.enableClosingConfirmation?.();
+
+    // Даем Telegram кадр, чтобы safeArea применился
     requestAnimationFrame(() => {
-      const top = tgData.safeAreaInset?.top ?? 0;
-      const bottom = tgData.safeAreaInset?.bottom ?? 0;
-
-      setSafeTop(top);
-      setSafeBottom(bottom);
-
-    });
-
-    // подписываемся на изменение viewport (iOS особенно любит менять safeArea после загрузки)
-    tgData.onEvent("viewportChanged", () => {
       setSafeTop(tgData.safeAreaInset?.top ?? 0);
       setSafeBottom(tgData.safeAreaInset?.bottom ?? 0);
     });
 
+    // Подписка на изменения viewport (особенно iOS)
+    const handleViewportChange = () => {
+      setSafeTop(tgData.safeAreaInset?.top ?? 0);
+      setSafeBottom(tgData.safeAreaInset?.bottom ?? 0);
+    };
+    tgData.onEvent("viewportChanged", handleViewportChange);
+
+    // Чистка при размонтировании
+    return () => {
+      tgData.offEvent?.("viewportChanged", handleViewportChange);
+    };
   }, [tgData]);
 
   return {safeTop, safeBottom};
