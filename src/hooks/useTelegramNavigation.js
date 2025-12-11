@@ -1,14 +1,11 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 
-/**
- * Хук для работы с кнопкой "Назад" Telegram
- * @param {Telegram.WebApp} tgData - объект Telegram WebApp
- * @param {string} backPage - страница, на которую возвращаемся
- * @param {function} navigate - функция навигации
- */
 export function useTelegramNavigation(tgData, { backPage, navigate }) {
   useEffect(() => {
     if (!tgData) return;
+
+    // Всегда скрываем MainButton по умолчанию
+    tgData.MainButton.hide?.();
 
     if (backPage) {
       // показываем кнопку "Назад"
@@ -17,15 +14,27 @@ export function useTelegramNavigation(tgData, { backPage, navigate }) {
         navigate(backPage);
       });
     } else {
-      // скрываем кнопку назад и показываем крестик
+      // на главной странице кнопка назад не нужна
       tgData.BackButton.hide?.();
-      tgData.MainButton.show?.();
-      tgData.MainButton.onClick(() => tgData.close());
+
+      // назначаем пользовательскую логику для закрытия
+      const confirmClose = () => {
+        if (window.confirm("Вы точно хотите закрыть мини-приложение?")) {
+          tgData.close();
+        }
+      };
+
+      // можно повесить на жест swipe-down или просто на крестик сверху
+      tgData.onEvent("back", confirmClose);
+      // Если нужно, можно назначить MainButton для закрытия:
+      // tgData.MainButton.setText("Закрыть");
+      // tgData.MainButton.onClick(confirmClose);
     }
 
     return () => {
       tgData.BackButton.offClick?.();
       tgData.MainButton.offClick?.();
+      tgData.offEvent?.("back");
     };
   }, [tgData, backPage, navigate]);
 }
