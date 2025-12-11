@@ -1,7 +1,7 @@
 import axios from "axios";
 import camelcaseKeys from "camelcase-keys";
 
-export class AuthApi {
+export default class AuthApi {
   constructor() {
     this.api = axios.create({
       baseURL: 'https://norchah.ru/users',

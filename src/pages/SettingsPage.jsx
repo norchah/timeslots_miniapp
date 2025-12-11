@@ -2,11 +2,31 @@ import React from 'react';
 import {useTelegramNavigation} from "../hooks/useTelegramNavigation.js";
 import {getUserDisplayData} from "../utils/utils.js";
 import EditDisplayNameForm from "../components/forms/EditDisplayNameForm.jsx";
+import UserApi from "../api/userApi.js";
 
 
 export default function SettingsPage({navigate, tgData, user, safeTop, safeBottom}) {
   useTelegramNavigation(tgData, {backPage: 'home', navigate})
   const {username, name, lastname, photoUrl} = getUserDisplayData(user)
+
+
+  async function saveNames(values) {
+    try {
+      const api = new UserApi();
+      const updated = await api.updateNames(
+        user.id,
+        values.displayName,
+        values.displayLastname
+      );
+
+      console.log("Updated user:", updated);
+
+      // можно перезаписать local state, если нужно
+      // navigate("home");
+    } catch (e) {
+      console.error("Ошибка обновления", e);
+    }
+  }
 
 
   return (
@@ -19,7 +39,7 @@ export default function SettingsPage({navigate, tgData, user, safeTop, safeBotto
         <div className="flex items-center justify-center flex-col outline outline-sky-400">
           <img className='w-[80px] h-[80px] rounded-full' src={photoUrl} alt='avatar'/>
           <p>Имя пользователя: {username}</p>
-          <EditDisplayNameForm/>
+          <EditDisplayNameForm user={user} onSubmit={saveNames} />
         </div>
       </main>
     </div>

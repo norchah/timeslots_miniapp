@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {TextInput} from "./inputs/textInput.js";
+import {TextInput} from "./inputs/textInput.jsx";
 
 export default function EditDisplayNameForm({user, onSubmit}) {
   const [values, setValues] = useState({
