@@ -1,16 +1,15 @@
 import {useMiniApp} from "./hooks/useMiniApp.js";
 import {pages} from "./pages/pages.js";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 
 export default function App() {
   const {tgData, user, safeTop, safeBottom, loading, error} = useMiniApp();
   const [page, setPage] = useState('home');
-  const [data, setData] = useState();
 
   // Находим нужный компонент
   const PageComponent = pages[page];
-
+  console.log('USER APP:::::::::::::', user)
 
   // Показываем лоадер, пока не готовы tgData или user
   if (!tgData || safeTop === null || loading) {
@@ -35,10 +34,6 @@ export default function App() {
       className="m-auto max-w-[456px] flex flex-col items-center justify-center outline mt-[35px]"
       style={{paddingTop: `${safeTop}px`, paddingBottom: `${safeBottom}px`}}
     >
-      <h1>Добро пожаловать в TimeSlots</h1>
-      <p>safe Bottom: {safeBottom}</p >
-      <p>safe Top: {safeTop}</p>
-      <button onClick={() => {setPage('settings')}}>settings</button>
 
       <PageComponent navigate={setPage}/>
 
