@@ -39,6 +39,8 @@ export default function SettingsPage({navigate, tgData, user, safeTop, safeBotto
         <div className="flex items-center justify-center flex-col outline outline-sky-400">
           <img className='w-[80px] h-[80px] rounded-full' src={photoUrl} alt='avatar'/>
           <p>Имя пользователя: {username}</p>
+          <p>Имя: {name}</p>
+          <p>Фамилия: {lastname}</p>
           <EditDisplayNameForm user={user} onSubmit={saveNames} />
         </div>
       </main>
