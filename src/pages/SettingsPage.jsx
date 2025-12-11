@@ -2,7 +2,7 @@ import React from 'react';
 import {useTelegramBackButton} from "../hooks/useTelegramBackButton.js";
 
 export default function SettingsPage({navigate, tgData, user, safeTop, safeBottom}) {
-  useTelegramBackButton(tgData, 'home', navigate)
+  // useTelegramBackButton(tgData, 'home', navigate)
 
   // if (!user) return <p>Загрузка пользователя...</p>;
   return (
