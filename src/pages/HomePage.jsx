@@ -1,7 +1,10 @@
 import React from 'react';
 import Card from "../components/cards/card.jsx";
+import {useTelegramNavigation} from "../hooks/useTelegramNavigation.js";
+
 
 export default function HomePage({navigate, tgData, user, safeTop, safeBottom}) {
+  useTelegramNavigation(tgData, {navigate})
   return (
     <div style={{paddingTop: safeTop, paddingBottom: safeBottom}}>
       <h1>Добро пожаловать в TimeSlots</h1>

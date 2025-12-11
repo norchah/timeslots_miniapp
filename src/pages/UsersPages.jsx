@@ -1,8 +1,8 @@
 import React from 'react';
-import {useTelegramBackButton} from "../hooks/useTelegramBackButton.js";
+import {useTelegramNavigation} from "../hooks/useTelegramNavigation.js";
 
 export default function UsersPages({navigate, tgData, user, safeTop, safeBottom}) {
-  useTelegramBackButton(tgData, 'home', navigate)
+  useTelegramNavigation(tgData, {backPage: 'home', navigate})
   return (
     <div>Users Page</div>
   );
