@@ -15,8 +15,8 @@ export default function SettingsPage({navigate, tgData, user, safeTop, safeBotto
       <div className="flex items-center justify-center flex-col">
         <img className='w-[80px] h-[80px] rounded-full' src={photoUrl} alt='avatar'/>
         <p>Имя пользователя: {username}</p>
-        <p>Имя из телеграма: {name}</p>
-        <p>Фамилия из телеграма: {lastname}</p>
+        <p>Имя: {name}</p>
+        <p>Фамилия: {lastname}</p>
       </div>
     </div>
   );
