@@ -1,6 +1,6 @@
 import {useMiniApp} from "./hooks/useMiniApp.js";
 import {pages} from "./pages/pages.js";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 
 export default function App() {
@@ -9,7 +9,11 @@ export default function App() {
 
   // Находим нужный компонент
   const PageComponent = pages[page];
-  console.log('USER APP:::::::::::::', user)
+
+  useEffect(() => {
+    console.log('USER APP:::::::::::::', user)
+  }, [user])
+
 
   // Показываем лоадер, пока не готовы tgData или user
   if (!tgData || safeTop === null || loading) {
@@ -34,9 +38,7 @@ export default function App() {
       className="m-auto max-w-[456px] flex flex-col items-center justify-center outline mt-[35px]"
       style={{paddingTop: `${safeTop}px`, paddingBottom: `${safeBottom}px`}}
     >
-
       <PageComponent navigate={setPage}/>
-
     </div>
   )
 }
