@@ -1,6 +1,7 @@
 import React from 'react';
 import {useTelegramNavigation} from "../hooks/useTelegramNavigation.js";
-import {getDisplayText, getNormalText, getUserDisplayData} from "../utils/utils.js";
+import {getUserDisplayData} from "../utils/utils.js";
+import EditDisplayNameForm from "../components/forms/EditDisplayNameForm.jsx";
 
 
 export default function SettingsPage({navigate, tgData, user, safeTop, safeBottom}) {
@@ -18,8 +19,7 @@ export default function SettingsPage({navigate, tgData, user, safeTop, safeBotto
         <div className="flex items-center justify-center flex-col outline outline-sky-400">
           <img className='w-[80px] h-[80px] rounded-full' src={photoUrl} alt='avatar'/>
           <p>Имя пользователя: {username}</p>
-          <p>Имя: {name}</p>
-          <p>Фамилия: {lastname}</p>
+          <EditDisplayNameForm/>
         </div>
       </main>
     </div>
