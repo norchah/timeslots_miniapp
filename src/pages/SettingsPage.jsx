@@ -45,7 +45,7 @@ export default function SettingsPage({navigate, tgData, user, safeTop, safeBotto
           <button
             type="button"
             className="
-              mt-2 py-2 rounded-xl bg-blue-500 text-white
+              mt-2 p-2 rounded-xl bg-blue-500 text-white
               font-medium transition-all active:scale-[0.97]"
           >Начать предоставлять услуги
           </button>
