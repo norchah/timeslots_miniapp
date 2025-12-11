@@ -1,13 +1,14 @@
 import React from 'react';
+import {useMiniApp} from "../hooks/useMiniApp.js";
 
-export default function HomePage() {
+export default function HomePage(navigate, props) {
   return (
     <div>
       <h1>Добро пожаловать в TimeSlots</h1>
-      <p>safe Bottom: {safeBottom}</p>
-      <p>safe Top: {safeTop}</p>
+      <p>safe Bottom: {props.safeBottom}</p>
+      <p>safe Top: {props.safeTop}</p>
       <button onClick={() => {
-        setPage('settings')
+        navigate.setPage('settings')
       }}>settings
       </button>
     </div>
