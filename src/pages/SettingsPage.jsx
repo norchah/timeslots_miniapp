@@ -9,7 +9,7 @@ export default function SettingsPage({navigate, tgData, user, safeTop, safeBotto
     <div>
       <h1>Настройки</h1>
       <p>Пользователь:</p>
-      <p className='w-[450px]'>{JSON.stringify(user, null, 2)}</p>
+      {/*<p className='w-[450px]'>{JSON.stringify(user, null, 2)}</p>*/}
       {/*<p>{user.username}</p>*/}
       {/*<p>{user.firstName}</p>*/}
       {/*<p>{user.lastName}</p>*/}
