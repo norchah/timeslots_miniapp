@@ -4,7 +4,7 @@ export default function Card({children, navigate, page}) {
   return (
     <button
       onClick={() => {
-        navigate({page})
+        navigate(page)
       }}
       className="w-full p-[2px] rounded-2xl
          bg-white/10 backdrop-blur-md

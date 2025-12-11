@@ -14,8 +14,8 @@ export default function HomePage({navigate, tgData, user, safeTop, safeBottom}) 
       </Card>
 
       {/* Можно ещё одну */}
-      <Card navigate={navigate} page="profile">
-        Профиль
+      <Card navigate={navigate} page="users">
+        Пользователи
       </Card>
 
     </div>
