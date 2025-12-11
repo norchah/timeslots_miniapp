@@ -13,7 +13,7 @@ export default function HomePage({navigate, tgData, user, safeTop, safeBottom}) 
       <p>safe Top: {safeTop}</p>
 
       {/* Универсальная карточка */}
-      <ButtonMain navigate={navigate} page="settings">
+      <ButtonMain navigate={navigate} page="settings" className='mr-1'>
         Настройки
       </ButtonMain>
 
