@@ -4,11 +4,20 @@ import {getUserDisplayData} from "../utils/utils.js";
 import EditDisplayNameForm from "../components/forms/EditDisplayNameForm.jsx";
 import UserApi from "../api/userApi.js";
 import ButtonMain from "../components/buttons/buttonMain.jsx";
+import { useUserStore } from "../store/useUserStore";
+
 
 
 export default function SettingsPage({navigate, tgData, user, safeTop, safeBottom}) {
   useTelegramNavigation(tgData, {backPage: 'home', navigate})
   const {username, name, lastname, photoUrl} = getUserDisplayData(user)
+  const {
+  displayName,
+  displayLastname,
+} = useUserStore();
+
+const finalName = displayName || name;
+const finalLastname = displayLastname || lastname;
 
   async function saveNames(values) {
     try {
@@ -38,8 +47,8 @@ export default function SettingsPage({navigate, tgData, user, safeTop, safeBotto
         <div className="flex items-center justify-center flex-col outline outline-sky-400">
           <img className='w-[80px] h-[80px] rounded-full' src={photoUrl} alt='avatar'/>
           <p>Имя пользователя: {username}</p>
-          <p>Имя: {name}</p>
-          <p>Фамилия: {lastname}</p>
+          <p>Имя: {displayName || name}</p>
+          <p>Фамилия: {displayLastname || lastname}</p>
           <EditDisplayNameForm user={user} onSubmit={saveNames}/>
           <ButtonMain
             navigate={navigate}

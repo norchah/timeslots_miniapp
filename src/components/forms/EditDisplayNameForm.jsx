@@ -1,12 +1,19 @@
 import React, {useState} from "react";
 import {TextInput} from "./inputs/textInput.jsx";
 import ButtonMain from "../buttons/buttonMain.jsx";
+import {useUserStore} from '../../store/useUserStore';
 
 export default function EditDisplayNameForm({user, onSubmit}) {
+  const {
+    setDisplayName,
+    setDisplayLastname,
+  } = useUserStore();
+
   const [values, setValues] = useState({
     displayName: user.displayName || "",
     displayLastname: user.displayLastname || ""
   });
+
 
   const [errors, setErrors] = useState({});
 
@@ -36,7 +43,8 @@ export default function EditDisplayNameForm({user, onSubmit}) {
   function handleSubmit(e) {
     e.preventDefault();
     if (!validate()) return;
-
+    setDisplayName(values.displayName);
+    setDisplayLastname(values.displayLastname);
     onSubmit(values);
   }
 
