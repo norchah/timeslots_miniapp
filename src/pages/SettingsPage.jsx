@@ -4,7 +4,7 @@ import { getUserDisplayData } from "../utils/utils.js";
 import EditDisplayNameForm from "../components/forms/EditDisplayNameForm.jsx";
 import UserApi from "../api/userApi.js";
 import ButtonMain from "../components/buttons/buttonMain.jsx";
-import { useUserStore } from "../store/zustand.js";
+import { useUserStore } from "../store/useUserStore.js";
 
 export default function SettingsPage({ navigate, tgData, user }) {
   useTelegramNavigation(tgData, { backPage: 'home', navigate });
