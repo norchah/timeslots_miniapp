@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useTelegramNavigation} from "../hooks/useTelegramNavigation.js";
 import {getUserDisplayData} from "../utils/utils.js";
 import EditDisplayNameForm from "../components/forms/EditDisplayNameForm.jsx";
@@ -15,9 +15,13 @@ export default function SettingsPage({navigate, tgData, user, safeTop, safeBotto
   displayName,
   displayLastname,
 } = useUserStore();
+  let finalName = displayName || name;
+  let finalLastname = displayLastname || lastname;
 
-const finalName = displayName || name;
-const finalLastname = displayLastname || lastname;
+  useEffect(() =>{
+    finalName = displayName || name;
+    finalLastname = displayLastname || lastname;
+  }, [finalName, finalLastname]);
 
   async function saveNames(values) {
     try {
