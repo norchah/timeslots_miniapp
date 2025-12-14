@@ -1,9 +1,10 @@
 import {useEffect} from "react";
 import {useAppSettings} from "../stores/useAppSettings";
+import {useI18nStore} from "../stores/useI18nStore.js";
 
 export function useMiniAppInit(tgData) {
   const setSettingsField = useAppSettings((s) => s.setSettingsField);
-  const setLang = useAppSettings((s) => s.setLang);
+  const setLang = useI18nStore((s) => s.setLang);
 
   useEffect(() => {
     if (!tgData) return;
