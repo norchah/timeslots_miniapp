@@ -17,7 +17,7 @@ export default function SettingsPage({navigate, tgData}) {
     getUserDisplayData(user);
 
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="flex flex-col items-center w-full py-4">
       <header>
         <h1 className="text-2xl">{text('settings')}</h1>
       </header>

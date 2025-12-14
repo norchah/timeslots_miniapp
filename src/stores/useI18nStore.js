@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import {useUserStore} from "./useUserStore.js";
 
 const texts = {
   en: {
@@ -14,7 +15,7 @@ const texts = {
 };
 
 export const useI18nStore = create((set, get) => ({
-  lang: 'en',
+  lang: useUserStore.getState().lang || 'ru',
   texts,
 
   setLang: (lang) => set({ lang }),
