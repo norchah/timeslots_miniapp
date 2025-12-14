@@ -8,10 +8,8 @@ export function useTgData() {
       const tgWebApp = window.Telegram.WebApp;
 
       setTgData(tgWebApp);
-      console.log('useTgData::::::::', tgData)
     }
-    console.log('useTgData::::::::', tgData)
   }, []);
-
+  console.log('useTgData::::::::', tgData)
   return {tgData}; // возвращаем все поля + source
 }
