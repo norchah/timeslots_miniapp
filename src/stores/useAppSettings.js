@@ -6,6 +6,7 @@ export const useAppSettings = create((set) => ({
 
   loading: true,
   error: null,
+  heightView: window.innerHeight,
 
   setSettingsField: (field, value) =>
     set({[field]: value}),

@@ -19,7 +19,7 @@ export default function App() {
   const app = useAppSettings();
   const text = useI18nStore((s) => s.text);
 
-
+  console.log('App:::::::: height ::::::', app.heightView)
   // Находим нужный компонент
   const PageComponent = pages[page];
 
