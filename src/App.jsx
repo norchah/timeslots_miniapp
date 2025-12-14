@@ -40,7 +40,7 @@ export default function App() {
 
   return (
     <div
-      className="m-auto max-w-full flex flex-col items-center justify-center mt-[40px] outline py-5"
+      className="m-auto w-full py-5 flex flex-col items-center justify-center mt-[40px] outline"
       style={{paddingTop: `${app.safeTop}px`, paddingBottom: `${app.safeBottom}px`}}
     >
       <PageComponent
