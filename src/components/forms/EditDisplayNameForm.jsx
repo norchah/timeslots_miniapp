@@ -1,51 +1,30 @@
-import React, {useState} from "react";
-import {TextInput} from "./inputs/textInput.jsx";
-import ButtonMain from "../buttons/buttonMain.jsx";
-import {useUserStore} from '../../stores/useUserStore';
+import React, { useEffect } from "react";
+import { TextInput } from "./inputs/textInput";
+import ButtonMain from "../buttons/buttonMain";
+import { useUserStore } from "../../stores/useUserStore";
+import { useEditProfileFormStore } from "../../stores/formStores/useEditProfileFormStore";
 
-export default function EditDisplayNameForm({user, onSubmit}) {
+export default function EditDisplayNameForm() {
+  const user = useUserStore();
+
   const {
-    setDisplayName,
-    setDisplayLastname,
-  } = useUserStore();
+    values,
+    errors,
+    loading,
+    setField,
+    submit,
+    initFromUser,
+  } = useEditProfileFormStore();
 
-  const [values, setValues] = useState({
-    displayName: user.displayName || "",
-    displayLastname: user.displayLastname || ""
-  });
-
-
-  const [errors, setErrors] = useState({});
-
-  function setField(field, value) {
-    setValues(prev => ({...prev, [field]: value}));
-  }
-
-  function validate() {
-    const newErrors = {};
-
-    if (values.displayName.trim().length === 0) {
-      newErrors.displayName = "Имя не может быть пустым";
+  useEffect(() => {
+    if (user.id) {
+      initFromUser(user);
     }
-
-    if (values.displayName.length > 30) {
-      newErrors.displayName = "Максимум 30 символов";
-    }
-
-    if (values.displayLastname.length > 30) {
-      newErrors.displayLastname = "Максимум 30 символов";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  }
+  }, [user.id]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!validate()) return;
-    setDisplayName(values.displayName);
-    setDisplayLastname(values.displayLastname);
-    onSubmit(values);
+    submit(user.id);
   }
 
   return (
@@ -53,26 +32,27 @@ export default function EditDisplayNameForm({user, onSubmit}) {
       onSubmit={handleSubmit}
       className="flex flex-col gap-4 p-4 w-full max-w-[420px]"
     >
-      <h2 className="text-xl font-semibold text-gray-800">
-        Изменить отображаемые данные
-      </h2>
-
       <TextInput
         label="Имя"
         value={values.displayName}
         error={errors.displayName}
-        onChange={(val) => setField("displayName", val)}
-        placeholder="Ваше Имя"
+        onChange={(val) => setField('displayName', val)}
       />
 
       <TextInput
         label="Фамилия"
         value={values.displayLastname}
         error={errors.displayLastname}
-        onChange={(val) => setField("displayLastname", val)}
-        placeholder="Ваша Фамилия"
+        onChange={(val) => setField('displayLastname', val)}
       />
-      <ButtonMain type="submit">Сохранить</ButtonMain>
+
+      {errors.form && (
+        <p className="text-red-500 text-sm">{errors.form}</p>
+      )}
+
+      <ButtonMain type="submit" disabled={loading}>
+        {loading ? 'Сохранение…' : 'Сохранить'}
+      </ButtonMain>
     </form>
   );
 }
