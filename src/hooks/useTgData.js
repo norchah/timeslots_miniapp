@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 
 export function useTgData() {
   const [tgData, setTgData] = useState(null); // сразу моковые данные
+  const [lang, setLang] = useState('en');
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.Telegram?.WebApp) {
@@ -10,6 +11,7 @@ export function useTgData() {
       setTgData(tgWebApp);
     }
   }, []);
-  console.log('useTgData::::::::', tgData)
-  return {tgData}; // возвращаем все поля + source
+  setLang(tgData.language_code)
+  console.log('useTgData::::::: LANG :::::', lang)
+  return {tgData, lang}; // возвращаем все поля + source
 }

@@ -6,12 +6,16 @@ export const useUserStore = create((set) => ({
   firstName: '',
   lastName: '',
   photoUrl: '',
+  allowsWriteToPm: false,
+  isPremium: false,
+  languageCode: "",
   displayName: '',
   displayLastname: '',
 
+  setField: (field, value) =>
+    set({ [field]: value }),
   setDisplayName: (displayName) =>
     set({ displayName }),
-
   setDisplayLastname: (displayLastname) =>
     set({ displayLastname }),
 }));
