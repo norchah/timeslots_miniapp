@@ -43,7 +43,6 @@ export default function App() {
     <div
       className="m-auto py-5 flex flex-col items-center justify-center mt-[40px] outline"
       style={{paddingTop: `${app.safeTop}px`, paddingBottom: `${app.safeBottom}px`, width: `${app.widthView}px`}}>
-    >
       <PageComponent
         navigate={setPage}
         tgData={tgData}
