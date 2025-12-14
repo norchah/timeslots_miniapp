@@ -15,7 +15,7 @@ export default function SettingsPage({ navigate, tgData }) {
   const setUserField = useUserStore((s) => s.setUserField);
 
   const app = useAppSettings();
-  const t = useI18nStore((s) => s.t);
+  const text = useI18nStore((s) => s.text);
 
   const { username, name, lastname, photoUrl } =
     getUserDisplayData(user);
@@ -46,7 +46,7 @@ export default function SettingsPage({ navigate, tgData }) {
   return (
     <div className="flex flex-col items-center w-full">
       <header>
-        <h1 className="text-2xl">{t('settings')}</h1>
+        <h1 className="text-2xl">{text('settings')}</h1>
       </header>
 
       <main className="w-full">
@@ -57,9 +57,9 @@ export default function SettingsPage({ navigate, tgData }) {
             alt="avatar"
           />
 
-          <p>{t('username')}: {username}</p>
-          <p>{t('name')}: {user.displayName || name}</p>
-          <p>{t('lastname')}: {user.displayLastname || lastname}</p>
+          <p>{text('username')}: {username}</p>
+          <p>{text('name')}: {user.displayName || name}</p>
+          <p>{text('lastname')}: {user.displayLastname || lastname}</p>
 
           <EditDisplayNameForm
             user={user}
@@ -72,7 +72,7 @@ export default function SettingsPage({ navigate, tgData }) {
             tgData={tgData}
             user={user}
           >
-            {t('becomeProfi')}
+            {text('becomeProfi')}
           </ButtonMain>
         </div>
       </main>
