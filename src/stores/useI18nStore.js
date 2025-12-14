@@ -4,10 +4,12 @@ const texts = {
   en: {
     loading: 'Loading...',
     error: 'Something went wrong',
+    becomeProfi: 'Стать Профи'
   },
   ru: {
     loading: 'Загрузка...',
     error: 'Произошла ошибка',
+    becomeProfi: 'Become Profi',
   },
 };
 
