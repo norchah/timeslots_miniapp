@@ -16,6 +16,7 @@ export function useMiniAppInit(tgData) {
       tgData.requestFullscreen?.();
     }
 
+    setLang(tgData.language_code || 'en')
     tgData.MainButton.hide?.();
     tgData.enableClosingConfirmation?.();
 
