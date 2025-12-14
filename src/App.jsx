@@ -20,6 +20,7 @@ export default function App() {
   const text = useI18nStore((s) => s.text);
 
   console.log('App:::::::: height ::::::', app.heightView)
+  console.log('App:::::::: width ::::::', app.widthView)
   // Находим нужный компонент
   const PageComponent = pages[page];
 
