@@ -25,6 +25,7 @@ export function useMiniAppInit(tgData) {
       setSettingsField('safeTop', tgData.safeAreaInset?.top ?? 0);
       setSettingsField('safeBottom', tgData.safeAreaInset?.bottom ?? 0);
       setSettingsField('heightView', window.innerHeight);
+      setSettingsField('widthView', window.innerWidth);
       setSettingsField('loading', false);
       setLang(tgData.language_code || 'en')
     };
