@@ -1,16 +1,20 @@
 import React from 'react';
-import Card from "../components/cards/card.jsx";
 import {useTelegramNavigation} from "../hooks/useTelegramNavigation.js";
 import ButtonMain from "../components/buttons/buttonMain.jsx";
 
 
-export default function HomePage({navigate, tgData, user, safeTop, safeBottom}) {
+export default function HomePage({navigate, tgData}) {
   useTelegramNavigation(tgData, {navigate})
+
+  // const user = useUserStore();
+  // const app = useAppSettings();
+  // const text = useI18nStore((s) => s.text);
+
   return (
-    <div style={{paddingTop: safeTop, paddingBottom: safeBottom}}>
+    // <div style={{paddingTop: app.safeTop, paddingBottom: app.safeBottom}}>
+    <div>
       <h1>Добро пожаловать в TimeSlots</h1>
-      <p>safe Bottom: {safeBottom}</p>
-      <p>safe Top: {safeTop}</p>
+
 
       {/* Универсальная карточка */}
       <ButtonMain navigate={navigate} page="settings" className='mr-1'>

@@ -1,17 +1,20 @@
-import {useEffect, useState} from "react";
+import { useEffect } from "react";
+import { useI18nStore } from "../stores/useI18nStore";
 
 export function useTgData() {
-  const [tgData, setTgData] = useState(null); // сразу моковые данные
-  const [lang, setLang] = useState('en');
+  const setLang = useI18nStore((s) => s.setLang);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.Telegram?.WebApp) {
-      const tgWebApp = window.Telegram.WebApp;
+    if (!window?.Telegram?.WebApp) return;
 
-      setTgData(tgWebApp);
-    }
+    const tg = window.Telegram.WebApp;
+
+    setLang(tg?.initDataUnsafe?.user?.language_code || 'en');
   }, []);
-  setLang(tgData.language_code)
-  console.log('useTgData::::::: LANG :::::', lang)
-  return {tgData, lang}; // возвращаем все поля + source
+
+  return {
+    tgData: typeof window !== "undefined"
+      ? window.Telegram?.WebApp ?? null
+      : null,
+  };
 }

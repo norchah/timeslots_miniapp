@@ -1,37 +1,37 @@
-import {useMiniApp} from "./hooks/useMiniApp.js";
+
 import {pages} from "./pages/pages.js";
 import React, {useEffect, useState} from "react";
 import Loading from "./components/UI/loading.js";
 import {useTgData} from "./hooks/useTgData.js";
+import {useMiniAppInit} from "./hooks/useMiniAppInit.js";
+import {useMiniAppAuth} from "./hooks/useMiniAppAuth.js";
 
 
 export default function App() {
-  const {tgData, user, safeTop, safeBottom, loading, error} = useMiniApp();
-  const { lang } = useTgData();
+  const {tgData} = useTgData();
+  useMiniAppInit(tgData)
+  useMiniAppAuth(tgData)
+
   const [page, setPage] = useState('home');
-  const [textLoading, setTextLoading] = useState('en');
+  const user = useUserStore();
+  const app = useAppSettings();
+  const text = useI18nStore((s) => s.text);
 
-
-  useEffect(() => {
-      if (lang === 'ru') {
-        setTextLoading('ru');
-      }
-  }, [lang]);
 
   // Находим нужный компонент
   const PageComponent = pages[page];
 
-  // Показываем лоадер, пока не готовы tgData или user
+  // Показываем лоадер, пока не готов user или app
   // Если данные еще не загрузились
-  if (loading || !tgData || !user || safeTop === null || safeBottom === null) {
-    <Loading>{textLoading}</Loading>
+  if (user.loading || app.loading) {
+    return <Loading>{text('loading')}</Loading>;
   }
 
   // Ошибка
-  if (error) {
+  if (user.error) {
     return (
       <div className="bg-slate-800 text-white h-screen flex items-center justify-center">
-        <h1>Error: {error}</h1>
+        <h1>Error: {user.error}</h1>
       </div>
     );
   }
@@ -39,14 +39,11 @@ export default function App() {
   return (
     <div
       className="m-auto max-w-[456px] flex flex-col items-center justify-center mt-[40px] outline py-2"
-      style={{paddingTop: `${safeTop}px`, paddingBottom: `${safeBottom}px`}}
+      style={{paddingTop: `${app.safeTop}px`, paddingBottom: `${app.safeBottom}px`}}
     >
       <PageComponent
         navigate={setPage}
         tgData={tgData}
-        user={user}
-        safeTop={safeTop}
-        safeBottom={safeBottom}
       />
     </div>
   )

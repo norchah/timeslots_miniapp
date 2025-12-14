@@ -1,39 +1,29 @@
-import {useState, useEffect} from "react";
-import AuthApi from "../api/authApi.js";
-
+import { useEffect } from "react";
+import AuthApi from "../api/authApi";
+import { useUserStore } from "../stores/useUserStore";
 
 export function useMiniAppAuth(tgData) {
-  const [user, setUser] = useState(null);
-  const [error, setError] = useState(null);
-  const [authLoading, setAuthLoading] = useState(true);
+  const setUserStore = useUserStore((s) => s.setUserStore);
+  const setUserField = useUserStore((s) => s.setUserField);
 
   useEffect(() => {
+    if (!tgData?.initData) return;
+
     async function login() {
       try {
-        // ждем пока tgData загрузится
-        if (!tgData) return;
-
-        if (!tgData?.initData || tgData.initData.length === 0) {
-          setError("No Telegram initData");
-          setAuthLoading(false);
-          return;
-        }
+        setUserField('loading', true);
 
         const api = new AuthApi();
-        const response = await api.login(tgData.initData);
+        const user = await api.login(tgData.initData);
 
-        setUser(response);
-        setError(null);
-
-      } catch (err) {
-        setError(err.message);
+        setUserStore(user);
+      } catch (e) {
+        setUserField('error', e.message);
       } finally {
-        setAuthLoading(false);
+        setUserField('loading', false);
       }
     }
 
     login();
   }, [tgData]);
-
-  return {user, error, authLoading};
 }
