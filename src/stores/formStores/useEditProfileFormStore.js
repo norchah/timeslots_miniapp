@@ -1,6 +1,6 @@
 import { create } from 'zustand';
-import UserApi from '../api/userApi';
-import { useUserStore } from './useUserStore';
+import UserApi from '../../api/userApi';
+import { useUserStore } from '../useUserStore';
 
 export const useEditProfileFormStore = create((set, get) => ({
   values: {
