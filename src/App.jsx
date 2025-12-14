@@ -41,8 +41,8 @@ export default function App() {
 
   return (
     <div
-      className="m-auto w-full py-5 flex flex-col items-center justify-center mt-[40px] outline"
-      style={{paddingTop: `${app.safeTop}px`, paddingBottom: `${app.safeBottom}px`}}
+      className="m-auto py-5 flex flex-col items-center justify-center mt-[40px] outline"
+      style={{paddingTop: `${app.safeTop}px`, paddingBottom: `${app.safeBottom}px`, width: `${app.widthView}px`}}>
     >
       <PageComponent
         navigate={setPage}
