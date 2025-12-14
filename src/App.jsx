@@ -4,6 +4,9 @@ import Loading from "./components/UI/loading.jsx";
 import {useTgData} from "./hooks/useTgData.js";
 import {useMiniAppInit} from "./hooks/useMiniAppInit.js";
 import {useMiniAppAuth} from "./hooks/useMiniAppAuth.js";
+import {useUserStore} from "./stores/useUserStore.js";
+import {useAppSettings} from "./stores/useAppSettings.js";
+import {useI18nStore} from "./stores/useI18nStore.js";
 
 
 export default function App() {
