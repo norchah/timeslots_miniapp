@@ -1,6 +1,5 @@
-
 import {pages} from "./pages/pages.js";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Loading from "./components/UI/loading.jsx";
 import {useTgData} from "./hooks/useTgData.js";
 import {useMiniAppInit} from "./hooks/useMiniAppInit.js";

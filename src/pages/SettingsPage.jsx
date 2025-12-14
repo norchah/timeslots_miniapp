@@ -6,7 +6,7 @@ import UserApi from "../api/userApi";
 import ButtonMain from "../components/buttons/buttonMain";
 import { useUserStore } from "../stores/useUserStore";
 import { useAppSettings } from "../stores/useAppSettings";
-import { useI18nStore } from "../stores/I18n";
+import { useI18nStore } from "../stores/useI18nStore.js";
 
 export default function SettingsPage({ navigate, tgData }) {
   useTelegramNavigation(tgData, { backPage: 'home', navigate });
