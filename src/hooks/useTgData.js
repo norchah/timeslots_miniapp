@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useI18nStore } from "../stores/useI18nStore";
+import { useI18nStore } from "../stores/I18n";
 
 export function useTgData() {
   const setLang = useI18nStore((s) => s.setLang);
