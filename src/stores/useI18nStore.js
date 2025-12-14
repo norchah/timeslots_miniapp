@@ -15,7 +15,7 @@ const texts = {
 };
 
 export const useI18nStore = create((set, get) => ({
-  lang: useUserStore.getState().lang || 'ru',
+  lang: useUserStore.getState().languageCode || 'ru', // <-- исправили
   texts,
 
   setLang: (lang) => set({ lang }),
