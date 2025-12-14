@@ -17,7 +17,7 @@ export const useI18nStore = create((set, get) => ({
 
   setLang: (lang) => set({ lang }),
 
-  t: (key) => {
+  text: (key) => {
     const { lang, texts } = get();
     return texts[lang]?.[key] ?? key;
   },
