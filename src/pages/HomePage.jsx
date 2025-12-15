@@ -3,7 +3,7 @@ import {useTelegramNavigation} from "../hooks/useTelegramNavigation.js";
 import ButtonMain from "../components/buttons/buttonMain.jsx";
 import {useModalStore} from "../stores/useModalStore";
 import SettingsModal from "../components/modal/SettingsModal";
-import ButtonModal from "../components/buttons/buttonModal.js";
+import ButtonModal from "../components/buttons/buttonModal.jsx";
 
 export default function HomePage({navigate, tgData}) {
   useTelegramNavigation(tgData, {navigate})
