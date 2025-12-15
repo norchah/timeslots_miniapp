@@ -32,7 +32,7 @@ export default function ModalShell({children, isTop}) {
 
       {/* Modal */}
       <div
-        className="relative w-full bg-slate-900 rounded-t-2xl transition-transform"
+        className="relative w-full bg-gray-600 rounded-t-2xl transition-transform"
         style={{
           transform: `translateY(${offset}px)`,
           height: "90vh"
