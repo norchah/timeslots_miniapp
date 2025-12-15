@@ -12,12 +12,21 @@ export default function ProfiRegistrationForm() {
   } = useProfiRegistrationFormStore();
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); submit(); }}>
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      submit();
+    }}>
       <TextInput
         label="Имя"
         value={values.displayName}
         error={errors.displayName}
         onChange={(v) => setField('displayName', v)}
+      />
+      <TextInput
+        label="Фамилия"
+        value={values.displayLastname}
+        error={errors.displayLastname}
+        onChange={(v) => setField('displayLastname', v)}
       />
 
       {/*<Checkbox*/}
