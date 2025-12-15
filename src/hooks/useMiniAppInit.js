@@ -16,8 +16,11 @@ export function useMiniAppInit(tgData) {
       tgData.lockOrientation?.();
       tgData.requestFullscreen?.();
     }
-    console.log('useMiniAppInit :::::: tgData ::::::', tgData)
-    setLang(tgData.language_code || 'en')
+    const lang =
+      tgData.initDataUnsafe?.user?.language_code || 'en';
+
+    setLang(lang);
+
     tgData.MainButton.hide?.();
     tgData.enableClosingConfirmation?.();
 
