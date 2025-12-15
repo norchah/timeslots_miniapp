@@ -5,9 +5,7 @@ export default function BecomeProfi({tgData, navigate}) {
   useTelegramNavigation(tgData, {backPage: 'home', navigate})
   return (
     <div className="flex flex-col justify-center px-5">
-      <h1 className='text-3xl'>Становление Профессионалом</h1>
-      <p>Здесь вы станете профессионалам и начнете оказывать услуги</p>
-      <p>Но после небольшой регистрации</p>
+      <h1 className='text-xl'>Что бы начать оказывать услуги заполните форму нижу</h1>
     </div>
   );
 }
