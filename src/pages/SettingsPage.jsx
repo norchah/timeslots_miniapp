@@ -4,22 +4,22 @@ import {getUserDisplayData} from "../utils/utils";
 import EditDisplayNameForm from "../components/forms/EditDisplayNameForm";
 import ButtonMain from "../components/buttons/buttonMain";
 import {useUserStore} from "../stores/useUserStore";
-import {useAppSettings} from "../stores/useAppSettings";
 import {useI18nStore} from "../stores/useI18nStore";
+import {useIsPro, useProfiDisplayName} from '../stores/useProfiSelectors';
 
 export default function SettingsPage({navigate, tgData}) {
   useTelegramNavigation(tgData, {backPage: 'home', navigate});
 
   const user = useUserStore();
   const text = useI18nStore((s) => s.text);
+  const isPro = useIsPro();
 
   const {username, name, lastname, photoUrl} =
     getUserDisplayData(user);
-  console.log('SettingsPage:::::: user.isPro::::::', user.isPro)
-  console.log('SettingsPage:::::: user::::::', user)
+
   // Определяем страницу для кнопки
-  const buttonPage = user.isPro ? 'homeProfi' : 'becomeProfi';
-  const buttonText = user.isPro ? text('switchToProfi') : text('becomeProfi');
+  const buttonPage = isPro ? 'homeProfi' : 'becomeProfi';
+  const buttonText = isPro ? text('switchToProfi') : text('becomeProfi');
 
 
   return (
@@ -40,8 +40,10 @@ export default function SettingsPage({navigate, tgData}) {
           <p>{text('name')}: {user.displayName || name}</p>
           <p>{text('lastname')}: {user.displayLastname || lastname}</p>
 
+
           {/* 🔥 форма теперь автономная */}
           <EditDisplayNameForm/>
+
           <ButtonMain
             navigate={navigate}
             page={buttonPage}

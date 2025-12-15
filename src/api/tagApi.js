@@ -1,7 +1,7 @@
 import axios from "axios";
 import camelcaseKeys from "camelcase-keys";
 
-export default class ProfiApi {
+export default class TagApi {
   constructor() {
     this.api = axios.create({
       baseURL: 'https://norchah.ru/profi',
@@ -14,11 +14,9 @@ export default class ProfiApi {
 
   async create(data) {
     const payload = {
-      id: data.userId,             // имя поля должно совпадать с бекендом
-      display_name: data.displayName,
-      display_lastname: data.displayLastname,
+      tag_name: data.tagName,
     };
-    console.log('PROFI API, PAYLOAD::::::::::::::   ', payload)
+
     const res = await this.api.post('/', payload);
     return camelcaseKeys(res.data, {deep: true});
   }

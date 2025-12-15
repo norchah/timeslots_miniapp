@@ -15,7 +15,6 @@ export function useMiniAppAuth(tgData) {
 
         const authApi = new AuthApi();
         const user = await authApi.login(tgData.initData);
-        console.log("useMiniAppAuth :::: user:::::", user);
         setUserStore(user);
       } catch (e) {
         setUserField('error', e.message);

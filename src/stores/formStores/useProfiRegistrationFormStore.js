@@ -3,6 +3,7 @@ import {validateProfiRegistration} from './validators/profiRegistration.validato
 import ProfiApi from '../../api/profiApi';
 import {useUserStore} from "../useUserStore.js";
 import UserApi from "../../api/userApi.js";
+import {useProfiStore} from "../useProfiStore.js";
 
 
 export const useProfiRegistrationFormStore = createFormStore({
@@ -28,10 +29,13 @@ export const useProfiRegistrationFormStore = createFormStore({
     });
 
     const setUserField = useUserStore.getState().setUserField;
+    const loadProfi = useProfiStore.getState().loadProfi;
+
     setUserField('displayName', values.displayName);
     setUserField('displayLastname', values.displayLastname);
 
-    await userApi.updateIsPro(userId, true);
+
+    loadProfi({userId});
 
     if (navigate) navigate('homeProfi');
   }

@@ -7,24 +7,29 @@ import {useMiniAppAuth} from "./hooks/useMiniAppAuth.js";
 import {useUserStore} from "./stores/useUserStore.js";
 import {useAppSettings} from "./stores/useAppSettings.js";
 import {useI18nStore} from "./stores/useI18nStore.js";
+import {useIsPro, useProfiDisplayName} from './stores/useProfiSelectors';
+import {useProfiStore} from "./stores/useProfiStore.js";
 
 
 export default function App() {
   const {tgData} = useTgData();
-  useMiniAppInit(tgData)
   useMiniAppAuth(tgData)
+  useMiniAppInit(tgData)
 
   const [page, setPage] = useState(null); // пока null, чтобы не рендерить ничего
   const user = useUserStore();
   const app = useAppSettings();
   const text = useI18nStore((s) => s.text);
+  const isPro = useIsPro();
+  const profiLoading = useProfiStore((s) => s.loading);
+
 
   // После загрузки user устанавливаем страницу
   useEffect(() => {
-    if (!user.loading && user.id != null && page === null) {
-      setPage(user.isPro ? 'homeProfi' : 'home');
+    if (!user.loading && !profiLoading && user.id && page === null) {
+      setPage(isPro ? 'homeProfi' : 'home');
     }
-  }, [user.loading, user.id, user.isPro, page]);
+  }, [user.loading, profiLoading, user.id, isPro, page]);
 
   // Показываем лоадер, пока не готов user или app
   // Если данные еще не загрузились
