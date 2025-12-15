@@ -9,6 +9,7 @@ import {useModalStore} from "../../stores/useModalStore";
 import BecomeProfiModal from "../../components/modal/BecomeProfiModal";
 import ButtonModal from "../buttons/buttonModal.jsx";
 import {useHaptic} from '../../hooks/useHaptic';
+const close = useModalStore((s) => s.close);
 
 export default function SettingsModal({navigate}) {
   const open = useModalStore((s) => s.open);
@@ -20,6 +21,7 @@ export default function SettingsModal({navigate}) {
     const {impact} = useHaptic();
     if (isPro) {
       // Уже Profi → просто переходим на страницу
+      close();
       navigate('homeProfi');
     } else {
       // Не Profi → открываем модалку регистрации
