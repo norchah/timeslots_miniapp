@@ -19,19 +19,16 @@ export default function App() {
   const app = useAppSettings();
   const text = useI18nStore((s) => s.text);
 
-  // Ждем, пока user загрузится
+  // После загрузки user устанавливаем страницу
   useEffect(() => {
-    if (!user.loading && user.id) {
+    if (!user.loading && user.id != null && page === null) {
       setPage(user.is_pro ? 'homeProfi' : 'home');
     }
-  }, [user.loading, user.id, user.is_pro]);
-
-  // Находим нужный компонент
-  const PageComponent = pages[page];
+  }, [user.loading, user.id, user.is_pro, page]);
 
   // Показываем лоадер, пока не готов user или app
   // Если данные еще не загрузились
-  if (user.loading || app.loading) {
+  if (user.loading || app.loading || page == null) {
     return <Loading>{text('loading')}</Loading>;
   }
 
