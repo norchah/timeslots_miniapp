@@ -1,12 +1,12 @@
 // components/modals/SettingsModal.jsx
 import React from 'react';
-import {getUserDisplayData} from "../utils/utils";
-import EditDisplayNameForm from "../components/forms/EditDisplayNameForm";
-import ButtonMain from "../components/buttons/buttonMain";
-import {useUserStore} from "../stores/useUserStore";
-import {useI18nStore} from "../stores/useI18nStore";
-import {useIsPro} from '../stores/useProfiSelectors';
-import {useModalStore} from "../stores/useModalStore";
+import {getUserDisplayData} from "../../utils/utils";
+import EditDisplayNameForm from "../../components/forms/EditDisplayNameForm";
+import ButtonMain from "../../components/buttons/buttonMain";
+import {useUserStore} from "../../stores/useUserStore";
+import {useI18nStore} from "../../stores/useI18nStore";
+import {useIsPro} from '../../stores/useProfiSelectors';
+import {useModalStore} from "../../stores/useModalStore";
 
 export default function SettingsModal() {
   const close = useModalStore((s) => s.close);
