@@ -18,6 +18,7 @@ export default class ProfiApi {
     display_name: data.displayName,
     display_lastname: data.displayLastname,
   };
+    condole.log('PROFI API, PAYLOAD::::::::::::::   ', payload)
     const res = await this.api.post('/', payload);
     return camelcaseKeys(res.data, {deep: true});
   }
