@@ -10,6 +10,7 @@ export function useMiniAppInit(tgData) {
   const userId = useUserStore((s) => s.id);
   const loadProfi = useProfiStore((s) => s.loadProfi);
 
+  // Эффект инициализации Telegram WebApp
   useEffect(() => {
     if (!tgData) return;
 
@@ -20,15 +21,8 @@ export function useMiniAppInit(tgData) {
       tgData.lockOrientation?.();
       tgData.requestFullscreen?.();
     }
-    const lang =
-      tgData.initDataUnsafe?.user?.language_code || 'en';
 
-    useEffect(() => {
-      if (!userId) return;
-      loadProfi(userId);
-    }, [userId]);
-
-
+    const lang = tgData.initDataUnsafe?.user?.language_code || 'en';
     setLang(lang);
 
     tgData.MainButton.hide?.();
@@ -49,4 +43,10 @@ export function useMiniAppInit(tgData) {
       tgData.offEvent?.('viewportChanged', updateInsets);
     };
   }, [tgData]);
+
+  // Эффект загрузки Profi
+  useEffect(() => {
+    if (!userId) return;
+    loadProfi(userId);
+  }, [userId, loadProfi]);
 }
