@@ -11,6 +11,7 @@ export const useUserStore = create((set) => ({
   languageCode: 'en',
   displayName: null,
   displayLastname: null,
+  is_pro: false,
 
   loading: true,
   error: null,
