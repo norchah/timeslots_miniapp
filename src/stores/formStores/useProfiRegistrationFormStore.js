@@ -17,10 +17,6 @@ export const useProfiRegistrationFormStore = createFormStore({
 
   async submit(values, userId) {
     const api = new ProfiApi();
-    await api.create({
-      userId,
-      display_name: values.displayName,
-      display_lastname: values.displayLastname,
-    });
+    await api.create(userId, values.displayName, values.displayLastname);
   },
 });

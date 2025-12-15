@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
-import { TextInput } from "./inputs/textInput";
+import React, {useEffect} from "react";
+import {TextInput} from "./inputs/textInput";
 import ButtonMain from "../buttons/buttonMain";
-import { useUserStore } from "../../stores/useUserStore";
-import { useEditProfileFormStore } from "../../stores/formStores/useEditProfileFormStore";
+import {useUserStore} from "../../stores/useUserStore";
+import {useEditProfileFormStore} from "../../stores/formStores/useEditProfileFormStore";
+import ButtonSubmit from "../buttons/buttonSubmit.js";
 
 export default function EditDisplayNameForm() {
   const user = useUserStore();
@@ -54,9 +55,9 @@ export default function EditDisplayNameForm() {
         <p className="text-red-500 text-sm">{errors.form}</p>
       )}
 
-      <ButtonMain type="submit" disabled={loading}>
+      <ButtonSubmit disabled={loading}>
         {loading ? 'Сохранение…' : 'Сохранить'}
-      </ButtonMain>
+      </ButtonSubmit>
     </form>
   );
 }

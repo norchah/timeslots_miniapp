@@ -2,9 +2,10 @@ import {useProfiRegistrationFormStore} from "../../stores/formStores/useProfiReg
 import {TextInput} from "./inputs/textInput.jsx";
 import ButtonMain from "../buttons/buttonMain.jsx";
 import {useUserStore} from "../../stores/useUserStore.js";
+import ButtonSubmit from "../buttons/buttonSubmit.js";
 
 export default function ProfiRegistrationForm() {
-  const id = useUserStore((s)=>s.id)
+  const id = useUserStore((s) => s.id)
   const {
     values,
     errors,
@@ -37,9 +38,9 @@ export default function ProfiRegistrationForm() {
       {/*  onChange={(v) => setField('acceptPolicy', v)}*/}
       {/*/>*/}
 
-      <ButtonMain type="submit" disabled={loading}>
-        Зарегистрироваться
-      </ButtonMain>
+      <ButtonSubmit type="submit" disabled={loading}>
+        {loading ? 'Регистрация…' : 'Зарегистрироваться'}
+      </ButtonSubmit>
     </form>
   );
 }
