@@ -39,14 +39,11 @@ export function useMiniAppInit(tgData) {
     requestAnimationFrame(updateInsets);
     tgData.onEvent('viewportChanged', updateInsets);
 
+    // сразу загрузка Profi
+    if (userId) loadProfi(userId);
+
     return () => {
       tgData.offEvent?.('viewportChanged', updateInsets);
     };
-  }, [tgData]);
-
-  // Эффект загрузки Profi
-  useEffect(() => {
-    if (!userId) return;
-    loadProfi(userId);
-  }, [userId, loadProfi]);
+  }, [tgData, userId]);
 }

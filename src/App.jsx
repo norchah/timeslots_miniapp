@@ -20,14 +20,15 @@ export default function App() {
   const app = useAppSettings();
   const text = useI18nStore((s) => s.text);
   const profi = useProfiStore((s) => s.profi);
+  const profiLoading = useProfiStore((s) => s.loading);
 
 
   // После загрузки user устанавливаем страницу
   useEffect(() => {
-    if (!user.loading && user.id && page === null) {
+    if (!user.loading && !profiLoading && user.id && page === null) {
       setPage(profi ? 'homeProfi' : 'home');
     }
-  }, [user.loading, user.id, profi, page]);
+  }, [user.loading, profiLoading, user.id, profi, page]);
 
   // Показываем лоадер, пока не готов user или app
   // Если данные еще не загрузились
