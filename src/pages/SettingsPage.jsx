@@ -41,7 +41,6 @@ export default function SettingsPage({navigate, tgData}) {
             navigate={navigate}
             page="becomeProfi"
             tgData={tgData}
-            user={user}
           >
             {text('becomeProfi')}
           </ButtonMain>

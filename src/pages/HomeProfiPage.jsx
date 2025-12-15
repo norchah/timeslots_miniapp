@@ -12,7 +12,6 @@ export default function HomeProfiPage(navigate, tgData) {
             navigate={navigate}
             page="home"
             tgData={tgData}
-            user={user}
           >
             Стать юзером
           </ButtonMain>
