@@ -1,16 +1,18 @@
-import { create } from 'zustand';
+import {create} from 'zustand';
 import {useUserStore} from "./useUserStore.js";
 
 const texts = {
   en: {
     loading: 'Loading...',
     error: 'Something went wrong',
-    becomeProfi: 'Стать Профи'
+    becomeProfi: 'Become Profi',
+    switchToProfi: 'switch to Profi'
   },
   ru: {
     loading: 'Загрузка...',
     error: 'Произошла ошибка',
-    becomeProfi: 'Become Profi',
+    becomeProfi: 'Стать Профи',
+    switchToProfi: 'Переключиться на Профи'
   },
 };
 
@@ -18,10 +20,10 @@ export const useI18nStore = create((set, get) => ({
   lang: useUserStore.getState().languageCode || 'ru', // <-- исправили
   texts,
 
-  setLang: (lang) => set({ lang }),
+  setLang: (lang) => set({lang}),
 
   text: (key) => {
-    const { lang, texts } = get();
+    const {lang, texts} = get();
     return texts[lang]?.[key] ?? key;
   },
 }));

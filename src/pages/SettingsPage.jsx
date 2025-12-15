@@ -16,6 +16,11 @@ export default function SettingsPage({navigate, tgData}) {
   const {username, name, lastname, photoUrl} =
     getUserDisplayData(user);
 
+  // Определяем страницу для кнопки
+  const buttonPage = user.is_pro ? 'homeProfi' : 'becomeProfi';
+  const buttonText = user.is_pro ? text('switchToProfi') : text('becomeProfi');
+
+
   return (
     <div className="flex flex-col items-center w-full py-4">
       <header>
@@ -36,13 +41,12 @@ export default function SettingsPage({navigate, tgData}) {
 
           {/* 🔥 форма теперь автономная */}
           <EditDisplayNameForm/>
-
           <ButtonMain
             navigate={navigate}
-            page="becomeProfi"
+            page={buttonPage}
             tgData={tgData}
           >
-            {text('becomeProfi')}
+            {buttonText}
           </ButtonMain>
         </div>
       </main>

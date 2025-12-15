@@ -1,5 +1,5 @@
 import {pages} from "./pages/pages.js";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Loading from "./components/UI/loading.jsx";
 import {useTgData} from "./hooks/useTgData.js";
 import {useMiniAppInit} from "./hooks/useMiniAppInit.js";
@@ -14,10 +14,17 @@ export default function App() {
   useMiniAppInit(tgData)
   useMiniAppAuth(tgData)
 
-  const [page, setPage] = useState('home');
+  const [page, setPage] = useState(null); // пока null, чтобы не рендерить ничего
   const user = useUserStore();
   const app = useAppSettings();
   const text = useI18nStore((s) => s.text);
+
+  // Ждем, пока user загрузится
+  useEffect(() => {
+    if (!user.loading && user.id) {
+      setPage(user.is_pro ? 'homeProfi' : 'home');
+    }
+  }, [user.loading, user.id, user.is_pro]);
 
   // Находим нужный компонент
   const PageComponent = pages[page];
