@@ -9,6 +9,7 @@ import {useModalStore} from "../../stores/useModalStore";
 import BecomeProfiModal from "../../components/modal/BecomeProfiModal";
 import ButtonModal from "../buttons/buttonModal.jsx";
 import {useHaptic} from '../../hooks/useHaptic';
+
 const close = useModalStore((s) => s.close);
 
 export default function SettingsModal({navigate}) {
@@ -16,17 +17,19 @@ export default function SettingsModal({navigate}) {
   const isPro = useIsPro();
   const user = useUserStore();
   const text = useI18nStore((s) => s.text);
+  const {impact} = useHaptic();
 
   const handleProfiButton = () => {
-    const {impact} = useHaptic();
+
     if (isPro) {
       // Уже Profi → просто переходим на страницу
       close();
       navigate('homeProfi');
     } else {
       // Не Profi → открываем модалку регистрации
-      open(BecomeProfiModal);
+      open(() => <BecomeProfiModal navigate={navigate}/>);
     }
+    impact('light');
   }
 
   const {username, name, lastname, photoUrl} =
@@ -57,7 +60,7 @@ export default function SettingsModal({navigate}) {
           <EditDisplayNameForm/>
 
           {/* Кнопка теперь открывает следующую модалку */}
-          <ButtonModal open={open} page={handleProfiButton}>
+          <ButtonModal page={handleProfiButton}>
             {buttonText}
           </ButtonModal>
         </div>
