@@ -1,6 +1,7 @@
-import { createFormStore } from './createFormStore';
-import { validateProfiRegistration } from './validators/profiRegistration.validator';
+import {createFormStore} from './createFormStore';
+import {validateProfiRegistration} from './validators/profiRegistration.validator';
 import ProfiApi from '../../api/profiApi';
+
 
 export const useProfiRegistrationFormStore = createFormStore({
   initialValues: {
@@ -14,8 +15,12 @@ export const useProfiRegistrationFormStore = createFormStore({
 
   validate: validateProfiRegistration,
 
-  async submit(values) {
+  async submit(values, userId) {
     const api = new ProfiApi();
-    await api.create(values);
+    await api.create({
+      userId,
+      display_name: values.displayName,
+      display_lastname: values.displayLastname,
+    });
   },
 });

@@ -1,8 +1,10 @@
 import {useProfiRegistrationFormStore} from "../../stores/formStores/useProfiRegistrationFormStore.js";
 import {TextInput} from "./inputs/textInput.jsx";
 import ButtonMain from "../buttons/buttonMain.jsx";
+import {useUserStore} from "../../stores/useUserStore.js";
 
 export default function ProfiRegistrationForm() {
+  const id = useUserStore((s)=>s.id)
   const {
     values,
     errors,
@@ -14,7 +16,7 @@ export default function ProfiRegistrationForm() {
   return (
     <form onSubmit={(e) => {
       e.preventDefault();
-      submit();
+      submit({userId: id});
     }}>
       <TextInput
         label="Имя"

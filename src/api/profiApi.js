@@ -14,10 +14,10 @@ export default class ProfiApi {
 
   async create(data) {
     const payload = {
-      display_name: data.displayName,
-      display_lastname: data.displayLastname,
-      // display_photo: data.displayPhoto,
-    }
+    user_id: data.userId,
+    display_name: data.displayName,
+    display_lastname: data.displayLastname,
+  };
     const res = await this.api.post('/', payload);
     return camelcaseKeys(res.data, {deep: true});
   }
