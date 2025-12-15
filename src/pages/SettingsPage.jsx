@@ -15,7 +15,7 @@ export default function SettingsPage({navigate, tgData}) {
 
   const {username, name, lastname, photoUrl} =
     getUserDisplayData(user);
-
+  console.log('SettingsPage:::::: user.isPro::::::', user.isPro)
   // Определяем страницу для кнопки
   const buttonPage = user.isPro ? 'homeProfi' : 'becomeProfi';
   const buttonText = user.isPro ? text('switchToProfi') : text('becomeProfi');
