@@ -6,10 +6,10 @@ export const useProfiRegistrationFormStore = createFormStore({
   initialValues: {
     displayName: '',
     displayLastname: '',
-    acceptPolicy: false,
-    inn: '',
-    profiType: null,
-    photo: null,
+    // acceptPolicy: false,
+    // inn: '',
+    // profiType: null,
+    // photo: null,
   },
 
   validate: validateProfiRegistration,

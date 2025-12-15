@@ -1,4 +1,6 @@
 import {useProfiRegistrationFormStore} from "../../stores/formStores/useProfiRegistrationFormStore.js";
+import {TextInput} from "./inputs/textInput.jsx";
+import ButtonMain from "../buttons/buttonMain.jsx";
 
 export default function ProfiRegistrationForm() {
   const {
@@ -18,11 +20,11 @@ export default function ProfiRegistrationForm() {
         onChange={(v) => setField('displayName', v)}
       />
 
-      <Checkbox
-        checked={values.acceptPolicy}
-        error={errors.acceptPolicy}
-        onChange={(v) => setField('acceptPolicy', v)}
-      />
+      {/*<Checkbox*/}
+      {/*  checked={values.acceptPolicy}*/}
+      {/*  error={errors.acceptPolicy}*/}
+      {/*  onChange={(v) => setField('acceptPolicy', v)}*/}
+      {/*/>*/}
 
       <ButtonMain disabled={loading}>
         Зарегистрироваться
