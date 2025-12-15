@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import {create} from 'zustand';
 
 export const useUserStore = create((set) => ({
   id: null,
@@ -11,19 +11,25 @@ export const useUserStore = create((set) => ({
   languageCode: 'en',
   displayName: null,
   displayLastname: null,
-  is_pro: false,
+  isPro: false,
 
   loading: true,
   error: null,
 
   setUserField: (field, value) =>
-    set({ [field]: value }),
+    set({[field]: value}),
 
-  setUserStore: (user) =>
-    set((state) => ({
-      ...state,
-      ...user,
-      loading: true,
-      error: null,
-    })),
+  setUserStore: (user) => set({
+    id: user.id,
+    username: user.username,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    photoUrl: user.photoUrl,
+    allowsWriteToPm: user.allowsWriteToPm,
+    isPremium: user.isPremium,
+    languageCode: user.languageCode,
+    displayName: user.displayName,
+    displayLastname: user.displayLastname,
+    isPro: user.isPro,
+  }),
 }));

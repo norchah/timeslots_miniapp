@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import {useEffect} from "react";
 import AuthApi from "../api/authApi";
-import { useUserStore } from "../stores/useUserStore";
+import {useUserStore} from "../stores/useUserStore";
 
 export function useMiniAppAuth(tgData) {
   const setUserStore = useUserStore((s) => s.setUserStore);
@@ -13,8 +13,8 @@ export function useMiniAppAuth(tgData) {
       try {
         setUserField('loading', true);
 
-        const api = new AuthApi();
-        const user = await api.login(tgData.initData);
+        const authApi = new AuthApi();
+        const user = await authApi.login(tgData.initData);
 
         setUserStore(user);
       } catch (e) {
