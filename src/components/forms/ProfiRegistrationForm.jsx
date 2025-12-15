@@ -18,7 +18,7 @@ export default function ProfiRegistrationForm({navigate}) {
   return (
     <form onSubmit={(e) => {
       e.preventDefault();
-      submit(values, id, navigate);
+      submit(id, navigate);
     }}>
       <TextInput
         label="Имя"
