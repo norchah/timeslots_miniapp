@@ -2,11 +2,12 @@
 import React from 'react';
 import {getUserDisplayData} from "../../utils/utils";
 import EditDisplayNameForm from "../../components/forms/EditDisplayNameForm";
-import ButtonMain from "../../components/buttons/buttonMain";
 import {useUserStore} from "../../stores/useUserStore";
 import {useI18nStore} from "../../stores/useI18nStore";
 import {useIsPro} from '../../stores/useProfiSelectors';
 import {useModalStore} from "../../stores/useModalStore";
+import BecomeProfiModal from "../../components/modal/BecomeProfiModal";
+import ButtonModal from "../buttons/buttonModal.jsx";
 
 export default function SettingsModal() {
   const close = useModalStore((s) => s.close);
@@ -43,14 +44,9 @@ export default function SettingsModal() {
           <EditDisplayNameForm/>
 
           {/* Кнопка теперь открывает следующую модалку */}
-          <ButtonMain
-            onClick={() => {
-              close();
-              // тут дальше можно открыть другую модалку
-            }}
-          >
+          <ButtonModal open={open} page={BecomeProfiModal}>
             {buttonText}
-          </ButtonMain>
+          </ButtonModal>
         </div>
       </main>
     </div>
