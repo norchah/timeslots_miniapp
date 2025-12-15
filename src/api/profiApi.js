@@ -14,10 +14,10 @@ export default class ProfiApi {
 
   async create(data) {
     const payload = {
-    user_id: data.userId,
-    display_name: data.displayName,
-    display_lastname: data.displayLastname,
-  };
+      user_id: data.userId,             // имя поля должно совпадать с бекендом
+      display_name: data.displayName,
+      display_lastname: data.displayLastname,
+    };
     console.log('PROFI API, PAYLOAD::::::::::::::   ', payload)
     const res = await this.api.post('/', payload);
     return camelcaseKeys(res.data, {deep: true});
