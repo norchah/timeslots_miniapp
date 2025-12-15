@@ -17,29 +17,17 @@ export const useProfiRegistrationFormStore = createFormStore({
   validate: validateProfiRegistration,
 
   async submit(values, userId) {
-    if (!get().validate()) return false;
+    const api = new ProfiApi();
+    await api.create({
+      userId,                     // сюда добавляем id
+      displayName: values.displayName,
+      displayLastname: values.displayLastname,
+    });
 
-    set({loading: true});
-    try {
-      const api = new ProfiApi();
-      await api.create({
-        userId,
-        displayName: values.displayName,
-        displayLastname: values.displayLastname,
-      });
+    const setUserField = useUserStore.getState().setUserField;
+    setUserField('displayName', values.displayName);
+    setUserField('displayLastname', values.displayLastname);
 
-      const setUserField = useUserStore.getState().setUserField;
-      setUserField('displayName', values.displayName);
-      setUserField('displayLastname', values.displayLastname);
 
-      return true; // <-- успех
-    } catch (e) {
-      set({errors: {form: e.message}});
-      return false;
-    } finally {
-      set({loading: false});
-    }
   }
-
-
 });

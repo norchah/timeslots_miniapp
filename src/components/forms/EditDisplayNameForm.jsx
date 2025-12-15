@@ -3,7 +3,6 @@ import {TextInput} from "./inputs/textInput";
 import ButtonMain from "../buttons/buttonMain";
 import {useUserStore} from "../../stores/useUserStore";
 import {useEditProfileFormStore} from "../../stores/formStores/useEditProfileFormStore";
-import ButtonSubmit from "../buttons/buttonSubmit.jsx";
 
 export default function EditDisplayNameForm() {
   const user = useUserStore();
@@ -55,9 +54,9 @@ export default function EditDisplayNameForm() {
         <p className="text-red-500 text-sm">{errors.form}</p>
       )}
 
-      <ButtonSubmit disabled={loading}>
+      <ButtonMain type={'submit'} disabled={loading}>
         {loading ? 'Сохранение…' : 'Сохранить'}
-      </ButtonSubmit>
+      </ButtonMain>
     </form>
   );
 }
