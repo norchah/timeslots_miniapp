@@ -22,7 +22,7 @@ export default class UserApi {
   }
 
   async updateIsPro(user_id, bool) {
-    const res = await this.api.post(`/admin/${user_id}/`, {is_pro: bool});
+    const res = await this.api.patch(`/admin/${user_id}/`, {is_pro: bool});
     return camelcaseKeys(res.data, {deep: true});
   }
 }
