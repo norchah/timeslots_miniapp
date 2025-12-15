@@ -14,7 +14,7 @@ export default class ProfiApi {
 
   async create(data) {
     const payload = {
-      user_id: data.userId,             // имя поля должно совпадать с бекендом
+      id: data.userId,             // имя поля должно совпадать с бекендом
       display_name: data.displayName,
       display_lastname: data.displayLastname,
     };
