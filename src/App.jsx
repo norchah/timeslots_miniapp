@@ -26,9 +26,9 @@ export default function App() {
   // После загрузки user устанавливаем страницу
   useEffect(() => {
     if (!user.loading && !profiLoading && user.id && page === null) {
-      setPage(profi ? 'homeProfi' : 'home');
+      setPage(user.isPro ? 'homeProfi' : 'home');
     }
-  }, [user.loading, profiLoading, user.id, profi, page]);
+  }, [user.loading, profiLoading, user.id, user.isPro, page]);
 
   // Показываем лоадер, пока не готов user или app
   // Если данные еще не загрузились

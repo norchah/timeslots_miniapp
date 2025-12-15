@@ -34,8 +34,9 @@ export const useProfiRegistrationFormStore = createFormStore({
     setUserField('displayName', values.displayName);
     setUserField('displayLastname', values.displayLastname);
 
-
-    loadProfi({userId});
+    await userApi.updateIsPro(userId, true)
+    setUserField('isPro', true);
+    await loadProfi({userId});
 
     if (navigate) navigate('homeProfi');
   }
