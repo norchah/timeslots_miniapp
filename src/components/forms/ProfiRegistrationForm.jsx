@@ -5,7 +5,7 @@ import ButtonMain from "../buttons/buttonMain.jsx";
 import ButtonSubmit from "../buttons/buttonSubmit.jsx";
 
 
-export default function ProfiRegistrationForm() {
+export default function ProfiRegistrationForm({navigate}) {
   const id = useUserStore((s) => s.id)
   const {
     values,
@@ -18,7 +18,7 @@ export default function ProfiRegistrationForm() {
   return (
     <form onSubmit={(e) => {
       e.preventDefault();
-      submit(id);
+      submit(values, id, navigate);
     }}>
       <TextInput
         label="Имя"
