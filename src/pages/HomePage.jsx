@@ -19,7 +19,7 @@ export default function HomePage({navigate, tgData}) {
         Пользователи
       </ButtonMain>
 
-      <ButtonModal open={open} page={SettingsModal}>
+      <ButtonModal open={open} page={SettingsModal} navigate={navigate}>
         опен Настройки
       </ButtonModal>
 
