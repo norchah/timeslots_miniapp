@@ -30,7 +30,6 @@ export function useMiniAppInit(tgData) {
       setSettingsField('heightView', window.innerHeight);
       setSettingsField('widthView', window.innerWidth);
       setSettingsField('loading', false);
-      setLang(tgData.language_code || 'en')
     };
 
     requestAnimationFrame(updateInsets);

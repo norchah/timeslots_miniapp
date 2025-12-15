@@ -1,5 +1,4 @@
 import {create} from 'zustand';
-import {useUserStore} from "./useUserStore.js";
 
 const texts = {
   en: {
