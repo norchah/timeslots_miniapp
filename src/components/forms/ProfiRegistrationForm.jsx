@@ -37,7 +37,7 @@ export default function ProfiRegistrationForm() {
       {/*  onChange={(v) => setField('acceptPolicy', v)}*/}
       {/*/>*/}
 
-      <ButtonMain disabled={loading}>
+      <ButtonMain type="submit" disabled={loading}>
         Зарегистрироваться
       </ButtonMain>
     </form>
