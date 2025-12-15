@@ -12,14 +12,18 @@ export default function EditDisplayNameForm() {
     errors,
     loading,
     setField,
+    setValues,
     submit,
-    initFromUser,
   } = useEditProfileFormStore();
 
+  // 🔹 инициализация формы из user
   useEffect(() => {
-    if (user.id) {
-      initFromUser(user);
-    }
+    if (!user.id) return;
+
+    setValues({
+      displayName: user.displayName || '',
+      displayLastname: user.displayLastname || '',
+    });
   }, [user.id]);
 
   function handleSubmit(e) {
