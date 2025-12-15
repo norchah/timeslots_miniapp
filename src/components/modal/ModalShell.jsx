@@ -32,7 +32,7 @@ export default function ModalShell({children, isTop}) {
 
       {/* Modal */}
       <div
-        className="relative w-full bg-gray-900 rounded-t-2xl transition-transform"
+        className="relative w-full bg-slate-900 rounded-t-2xl transition-transform"
         style={{
           transform: `translateY(${offset}px)`,
           height: "90vh"
@@ -42,7 +42,7 @@ export default function ModalShell({children, isTop}) {
         onTouchEnd={onTouchEnd}
       >
         {/* Handle */}
-        <div className="w-12 h-1 bg-slate-600 rounded-full mx-auto mt-3 mb-2"/>
+        <div className="w-12 h-1 bg-gray-600 rounded-full mx-auto mt-3 mb-2"/>
 
         {/* Close */}
         <button
