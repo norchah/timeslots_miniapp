@@ -2,7 +2,7 @@ import {useProfiRegistrationFormStore} from "../../stores/formStores/useProfiReg
 import {TextInput} from "./inputs/textInput.jsx";
 import ButtonMain from "../buttons/buttonMain.jsx";
 import {useUserStore} from "../../stores/useUserStore.js";
-import ButtonSubmit from "../buttons/buttonSubmit.js";
+import ButtonSubmit from "../buttons/buttonSubmit.jsx";
 
 export default function ProfiRegistrationForm() {
   const id = useUserStore((s) => s.id)

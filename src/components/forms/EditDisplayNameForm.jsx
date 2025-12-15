@@ -3,7 +3,7 @@ import {TextInput} from "./inputs/textInput";
 import ButtonMain from "../buttons/buttonMain";
 import {useUserStore} from "../../stores/useUserStore";
 import {useEditProfileFormStore} from "../../stores/formStores/useEditProfileFormStore";
-import ButtonSubmit from "../buttons/buttonSubmit.js";
+import ButtonSubmit from "../buttons/buttonSubmit.jsx";
 
 export default function EditDisplayNameForm() {
   const user = useUserStore();
