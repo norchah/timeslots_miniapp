@@ -15,6 +15,13 @@ export default function HomeProfiPage({navigate, tgData}) {
       >
         Стать юзером
       </ButtonMain>
+      <ButtonMain
+        navigate={navigate}
+        page='profiClients'
+        tgData={tgData}
+      >
+        Мои клиенты
+      </ButtonMain>
     </div>
   );
 }

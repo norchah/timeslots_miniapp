@@ -8,6 +8,7 @@ import {useUserStore} from "./stores/useUserStore.js";
 import {useAppSettings} from "./stores/useAppSettings.js";
 import {useI18nStore} from "./stores/useI18nStore.js";
 import {useProfiStore} from "./stores/useProfiStore.js";
+import ModalRoot from "./components/modal/ModalRoot";
 
 
 export default function App() {
@@ -53,13 +54,18 @@ export default function App() {
   }
 
   return (
-    <div
-      className="m-auto py-5 flex flex-col items-center justify-center mt-[40px]"
-      style={{paddingTop: `${app.safeTop}px`, paddingBottom: `${app.safeBottom}px`, width: `${app.widthView}px`}}>
-      <PageComponent
-        navigate={setPage}
-        tgData={tgData}
-      />
-    </div>
+    <>
+      <div
+        className="m-auto py-5 flex flex-col items-center justify-center mt-[40px]"
+        style={{paddingTop: `${app.safeTop}px`, paddingBottom: `${app.safeBottom}px`, width: `${app.widthView}px`}}>
+        <PageComponent
+          navigate={setPage}
+          tgData={tgData}
+        />
+      </div>
+
+      <ModalRoot/>
+    </>
+
   )
 }
