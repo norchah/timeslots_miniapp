@@ -41,6 +41,13 @@ export default function App() {
     );
   }
 
+  const PageComponent = pages[page];
+
+  // На всякий случай
+  if (!PageComponent) {
+    return <div>Page not found: {page}</div>;
+  }
+
   return (
     <div
       className="m-auto py-5 flex flex-col items-center justify-center mt-[40px]"
