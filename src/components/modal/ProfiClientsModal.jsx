@@ -11,6 +11,15 @@ export default function ProfiClientsModal() {
     );
   }
   return (
-    <div>Тут будут клиенты, типа легка срмка</div>
+    <div className="flex flex-col gap-2">
+      {clients.map((client) => (
+        <div key={client.id}>
+          <p>id: {client.id}</p>
+          <p>имя: {client.customName}</p>
+          <p>фамилия: {client.Lastname}</p>
+          <p>заметка: {client.notes}</p>
+        </div>
+      ))}
+    </div>
   );
 }
