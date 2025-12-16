@@ -4,8 +4,11 @@ import ButtonOpenModal from "../components/buttons/ButtonOpenModal.jsx";
 import ProfiClientsModal from "../components/modal/ProfiClientsModal.jsx";
 import ProfiTagsModal from "../components/modal/ProfiTagsModal.jsx";
 import ProfiScheduleModal from "../components/modal/ProfiScheduleModal.jsx";
+import {useProfiStore} from "../stores/useProfiStore.js";
 
 export default function HomeProfiPage() {
+  const profi = useProfiStore((s) => s.profi);
+  console.log('HomeProfiPage :::::: profi', profi);
   return (
     <div className='flex flex-col justify-center inline-flex items-center'>
       <h1>Home Page для пользователя предоставляющего услуги</h1>
