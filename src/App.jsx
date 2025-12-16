@@ -76,23 +76,17 @@ export default function App() {
 
   /* ================= Render ================= */
   return (
-
+    <>
       <div
-        className="flex flex-col items-center justify-center min-h-screen"
+        className="flex flex-col items-center justify-center py-5 mt-[40px]"
         style={{
-          paddingTop: `${Math.max(app.safeTop, 0)}px`,
-          paddingBottom: `${Math.max(app.safeBottom, 0)}px`,
-          minHeight: `calc(100vh - ${app.safeTop + app.safeBottom}px)`,
+          paddingTop: `${app.safeTop}px`,
+          paddingBottom: `${app.safeBottom}px`,
+          width: `${app.widthView}px`,
         }}
       >
-        <div
-          className="w-full max-w-md mx-auto px-4"
-          style={{
-            width: `${Math.min(app.widthView, 428)}px`,
-          }}
-        >
-          <PageComponent tgData={tgData}/>
-        </div>
+        <PageComponent tgData={tgData}/>
       </div>
+    </>
   );
 }
