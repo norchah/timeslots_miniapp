@@ -60,7 +60,7 @@ export default function App() {
         paddingTop: `${app.safeTop}px`,
         paddingBottom: `${app.safeBottom}px`,
         width: `${app.widthView}px`,
-        margin: '40px auto 0', // вместо mt-[40px] + m-auto
+        // margin: '40px auto 0', // вместо mt-[40px] + m-auto
       }}
     >
       <PageComponent tgData={tgData}/>
