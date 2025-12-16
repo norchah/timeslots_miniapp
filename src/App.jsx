@@ -27,6 +27,7 @@ export default function App() {
 
   /* ================= Loading ================= */
   // ждём, пока safeTop и safeBottom реально изменятся с 0
+
   const isLoading = !initialized || user.loading || app.loading;
   if (isLoading) return <Loading>{text("loading")}</Loading>;
 
