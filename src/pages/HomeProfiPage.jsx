@@ -10,15 +10,20 @@ export default function HomeProfiPage() {
   const profi = useProfiStore((s) => s.profi);
   console.log('HomeProfiPage :::::: profi', profi);
   return (
-    <div className='flex flex-col justify-center inline-flex items-center'>
-      <h1>Home Page для пользователя предоставляющего услуги</h1>
+    <div className='flex flex-col justify-center inline-flex items-center px-3'>
+      <h1>Тут у нас профи {profi.displayName}</h1>
+      <img
+        className="w-[80px] h-[80px] rounded-full"
+        src={profi.photoUrl}
+        alt="avatar"
+      />
       <p>настройки, записи то се</p>
       <ul>
         <li>
           <ButtonNavigate
             page='home'
           >
-            Переключиться на пользователя
+          Как пользователя
           </ButtonNavigate>
         </li>
         <li>

@@ -15,7 +15,7 @@ export const useProfiRegistrationFormStore = createFormStore({
     // acceptPolicy: false,
     // inn: '',
     // profiType: null,
-    // photo: null,
+    photo: null,
   },
 
   validate: validateProfiRegistration,
@@ -28,6 +28,7 @@ export const useProfiRegistrationFormStore = createFormStore({
       userId,                     // сюда добавляем id
       displayName: values.displayName,
       displayLastname: values.displayLastname,
+      displayPhoto: useUserStore.getState().photoUrl,
     });
 
     const setUserField = useUserStore.getState().setUserField;

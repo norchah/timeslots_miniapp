@@ -17,6 +17,7 @@ export default class ProfiApi {
       id: data.userId,             // имя поля должно совпадать с бекендом
       display_name: data.displayName,
       display_lastname: data.displayLastname,
+      display_photo: data.displayPhoto,
     };
     console.log('PROFI API, CREATE - PAYLOAD::::::::::::::   ', payload)
     const res = await this.api.post('/', payload);
