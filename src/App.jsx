@@ -53,7 +53,7 @@ export default function App() {
   /* ================= Render ================= */
 
   return (
-    <div className='outline outline-sky-500'>
+    <>
       <div
         className="m-auto py-5 flex flex-col items-center justify-center mt-[40px] outline outline-red-300"
         style={{
@@ -66,6 +66,6 @@ export default function App() {
       </div>
 
       <ModalRoot/>
-    </div>
+    </>
   );
 }
