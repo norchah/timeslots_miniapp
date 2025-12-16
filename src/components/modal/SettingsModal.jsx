@@ -23,7 +23,7 @@ export default function SettingsModal() {
 
   const button = isPro
     ? <ButtonNavigate page={'homeProfi'}>{text('switchToProfi')}</ButtonNavigate>
-    : <ButtonOpenModal modal={<BecomeProfiModal/>}>{text('becomeProfi')}</ButtonOpenModal>
+    : <ButtonOpenModal modal={BecomeProfiModal}>{text('becomeProfi')}</ButtonOpenModal>
 
   // const handleProfiButton = () => {
   //   impact('light');
