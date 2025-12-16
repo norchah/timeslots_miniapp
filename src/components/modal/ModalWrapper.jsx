@@ -29,7 +29,7 @@ export default function ModalWrapper({children}) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end">
+    <div className="fixed inset-0 z-50 flex items-end mt-1 outline outline-sky-600">
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/40"
