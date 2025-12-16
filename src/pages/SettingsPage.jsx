@@ -1,5 +1,4 @@
 import React from 'react';
-import {useTelegramNavigation} from "../hooks/useTelegramNavigation";
 import {getUserDisplayData} from "../utils/utils";
 import EditDisplayNameForm from "../components/forms/EditDisplayNameForm";
 import ButtonMain from "../components/buttons/buttonMain";
@@ -7,9 +6,7 @@ import {useUserStore} from "../stores/useUserStore";
 import {useI18nStore} from "../stores/useI18nStore";
 import {useIsPro, useProfiDisplayName} from '../stores/useProfiSelectors';
 
-export default function SettingsPage({navigate, tgData}) {
-  useTelegramNavigation(tgData, {backPage: 'home', navigate});
-
+export default function SettingsPage() {
   const user = useUserStore();
   const text = useI18nStore((s) => s.text);
   const isPro = useIsPro();
