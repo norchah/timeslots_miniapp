@@ -3,6 +3,7 @@ import ButtonNavigate from "../components/buttons/ButtonNavigate.jsx";
 import ButtonOpenModal from "../components/buttons/ButtonOpenModal.jsx";
 import ProfiClientsModal from "../components/modal/ProfiClientsModal.jsx";
 import ProfiTagsModal from "../components/modal/ProfiTagsModal.jsx";
+import ProfiScheduleModal from "../components/modal/ProfiScheduleModal.jsx";
 
 export default function HomeProfiPage() {
   return (
