@@ -4,6 +4,7 @@ import ProfiApi from '../../api/profiApi';
 import {useUserStore} from "../useUserStore.js";
 import UserApi from "../../api/userApi.js";
 import {useProfiStore} from "../useProfiStore.js";
+import {usePageStore} from "../usePageStore.js";
 
 
 export const useProfiRegistrationFormStore = createFormStore({
@@ -30,6 +31,7 @@ export const useProfiRegistrationFormStore = createFormStore({
 
     const setUserField = useUserStore.getState().setUserField;
     const loadProfi = useProfiStore.getState().loadProfi;
+    const setMode = usePageStore.getState().setMode;
 
     setUserField('displayName', values.displayName);
     setUserField('displayLastname', values.displayLastname);
@@ -38,6 +40,6 @@ export const useProfiRegistrationFormStore = createFormStore({
     setUserField('isPro', true);
     await loadProfi({userId});
 
-    if (navigate) navigate('homeProfi');
+    setMode('homeProfi');
   }
 });

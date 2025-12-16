@@ -24,7 +24,7 @@ export default class ProfiApi {
   }
 
   async getById(userId) {
-    console.log('PROFI API, GET_BY_ID - PAYLOAD::::::::::::::   ', payload)
+    console.log('PROFI API, GET_BY_ID - PAYLOAD::::::::::::::   ')
     const res = await this.api.get(`/${userId}/`);
     return camelcaseKeys(res.data, {deep: true});
   }

@@ -1,8 +1,8 @@
-import {useProfiRegistrationFormStore} from "../../stores/formStores/useProfiRegistrationFormStore.js";
-import {TextInput} from "./inputs/textInput.jsx";
-import {useUserStore} from "../../stores/useUserStore.js";
-import ButtonSubmit from "../buttons/buttonSubmit.jsx";
-import {usePageStore} from "../../stores/usePageStore.js";
+import {useProfiRegistrationFormStore} from "../../stores/formStores/useProfiRegistrationFormStore";
+import {TextInput} from "./inputs/textInput";
+import {useUserStore} from "../../stores/useUserStore";
+import ButtonSubmit from "../buttons/ButtonSubmit";
+import {usePageStore} from "../../stores/usePageStore";
 
 export default function ProfiRegistrationForm() {
   const id = useUserStore((s) => s.id);
@@ -43,7 +43,7 @@ export default function ProfiRegistrationForm() {
         onChange={(v) => setField('displayLastname', v)}
       />
 
-      <ButtonSubmit type="submit" disabled={loading}>
+      <ButtonSubmit disabled={loading}>
         {loading ? 'Регистрация…' : 'Зарегистрироваться'}
       </ButtonSubmit>
     </form>
