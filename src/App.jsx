@@ -18,6 +18,12 @@ export default function App() {
   const text = useI18nStore((s) => s.text);
   const mode = usePageStore((s) => s.mode);
   const initialized = usePageStore((s) => s.initialized);
+  console.log('APP STATE', {
+    userLoading: user.loading,
+    userId: user.id,
+    isPro: user.isPro,
+    initialized,
+  });
 
   /* ================= Loading ================= */
   const isLoading = !initialized || user.loading || app.loading || user.id
