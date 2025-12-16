@@ -13,7 +13,7 @@ export default function HomeProfiPage() {
           <ButtonNavigate
             page='home'
           >
-            Стать юзером
+            Переключиться на пользователя
           </ButtonNavigate>
         </li>
         <li>
@@ -24,10 +24,10 @@ export default function HomeProfiPage() {
           </ButtonOpenModal>
         </li>
         <li>
-          <ButtonOpenModal>Управление тегами</ButtonOpenModal>
+          <ButtonOpenModal>Мои теги</ButtonOpenModal>
         </li>
         <li>
-          <ButtonOpenModal>тут будет расписание</ButtonOpenModal>
+          <ButtonOpenModal>Мое расписание</ButtonOpenModal>
         </li>
       </ul>
     </div>
