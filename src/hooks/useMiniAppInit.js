@@ -38,21 +38,24 @@ export function useMiniAppInit(tgData) {
     tgData.MainButton.hide?.();
     tgData.enableClosingConfirmation?.();
 
-    const lang =
-      tgData.initDataUnsafe?.user?.language_code || "en";
+    const lang = tgData.initDataUnsafe?.user?.language_code || "en";
     setLang(lang);
 
     /* ================= Insets ================= */
 
     const updateInsets = () => {
-      setSettingsField("safeTop", tgData.safeAreaInset?.top ?? 0);
-      setSettingsField("safeBottom", tgData.safeAreaInset?.bottom ?? 0);
+      const safeTop = tgData.safeAreaInset?.top ?? 0;
+      const safeBottom = tgData.safeAreaInset?.bottom ?? 0;
+      setSettingsField("safeTop", safeTop);
+      setSettingsField("safeBottom", safeBottom);
       setSettingsField("heightView", window.innerHeight);
       setSettingsField("widthView", window.innerWidth);
-
     };
 
-    requestAnimationFrame(updateInsets);
+    // сразу применяем
+    updateInsets();
+
+    // подписываемся на изменения viewport
     tgData.onEvent("viewportChanged", updateInsets);
 
     /* ================= Profi ================= */
@@ -65,7 +68,10 @@ export function useMiniAppInit(tgData) {
 
     setMode(user.isPro ? "homeProfi" : "home");
     setInitialized();
+
+    // снимаем флаг загрузки
     setSettingsField("loading", false);
+
     return () => {
       tgData.offEvent?.("viewportChanged", updateInsets);
     };

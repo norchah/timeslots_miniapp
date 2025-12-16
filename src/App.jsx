@@ -21,19 +21,19 @@ export default function App() {
 
   const user = useUserStore();
   const app = useAppSettings();
-
   const text = useI18nStore((s) => s.text);
   const mode = usePageStore((s) => s.mode);
   const initialized = usePageStore((s) => s.initialized);
 
   /* ================= Loading ================= */
+  const isLoading =
+    !initialized || user.loading || app.loading || app.safeTop === null;
 
-  if (!initialized || user.loading || app.loading || app.safeTop !== 0 || app.safeTop !== null) {
+  if (isLoading) {
     return <Loading>{text("loading")}</Loading>;
   }
 
   /* ================= Error ================= */
-
   if (user.error) {
     return (
       <div className="bg-slate-800 text-white h-screen flex items-center justify-center">
@@ -43,7 +43,6 @@ export default function App() {
   }
 
   /* ================= Page ================= */
-
   const PageComponent = pages[mode];
 
   if (!PageComponent) {
@@ -51,18 +50,22 @@ export default function App() {
   }
 
   /* ================= Render ================= */
-
   return (
+    <>
+      {/* Модальные окна */}
+      <ModalRoot/>
 
-    <div
-      className="flex flex-col items-center justify-center py-5 outline outline-red-300 mt-[40px]"
-      style={{
-        paddingTop: `${app.safeTop}px`,
-        paddingBottom: `${app.safeBottom}px`,
-        width: `${app.widthView}px`,
-      }}
-    >
-      <PageComponent tgData={tgData}/>
-    </div>
+      {/* Основная разметка */}
+      <div
+        className="flex flex-col items-center justify-center py-5 mt-[40px]"
+        style={{
+          paddingTop: `${app.safeTop}px`,
+          paddingBottom: `${app.safeBottom}px`,
+          width: `${app.widthView}px`,
+        }}
+      >
+        <PageComponent tgData={tgData}/>
+      </div>
+    </>
   );
 }
