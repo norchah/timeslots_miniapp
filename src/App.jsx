@@ -55,12 +55,11 @@ export default function App() {
   return (
 
     <div
-      className="flex flex-col items-center justify-center py-5 outline outline-red-300"
+      className="flex flex-col items-center justify-center py-5 outline outline-red-300 mt-[40px]"
       style={{
         paddingTop: `${app.safeTop}px`,
         paddingBottom: `${app.safeBottom}px`,
         width: `${app.widthView}px`,
-        // margin: '40px auto 0', // вместо mt-[40px] + m-auto
       }}
     >
       <PageComponent tgData={tgData}/>

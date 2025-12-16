@@ -49,7 +49,7 @@ export function useMiniAppInit(tgData) {
       setSettingsField("safeBottom", tgData.safeAreaInset?.bottom ?? 0);
       setSettingsField("heightView", window.innerHeight);
       setSettingsField("widthView", window.innerWidth);
-      setSettingsField("loading", false);
+
     };
 
     requestAnimationFrame(updateInsets);
@@ -65,6 +65,7 @@ export function useMiniAppInit(tgData) {
 
     setMode(user.isPro ? "homeProfi" : "home");
     setInitialized();
+    setSettingsField("loading", false);
     return () => {
       tgData.offEvent?.("viewportChanged", updateInsets);
     };
