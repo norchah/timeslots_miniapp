@@ -14,11 +14,9 @@ export default function ButtonBase(
 
   const handleClick = (e) => {
     if (disabled) return;
-
     if (haptic !== 'none') {
       impact(haptic);
     }
-
     onClick?.(e);
   };
 
