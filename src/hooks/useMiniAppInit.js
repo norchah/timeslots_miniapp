@@ -19,51 +19,36 @@ export function useMiniAppInit(tgData) {
 
   useEffect(() => {
     if (!tgData || initializedRef.current) return;
-    if (user.loading) return; // ждём пока user загрузится
+    if (user.loading) return;
 
     initializedRef.current = true;
 
-    /* ================= Telegram Init ================= */
     tgData.ready();
-    if (tgData.platform !== "tdesktop") {
-      tgData.disableVerticalSwipes?.();
-      tgData.lockOrientation?.();
-      tgData.requestFullscreen?.();
-    }
-
+    tgData.disableVerticalSwipes?.();
+    tgData.lockOrientation?.();
+    tgData.requestFullscreen?.();
     tgData.MainButton.hide?.();
     tgData.enableClosingConfirmation?.();
 
     const lang = tgData.initDataUnsafe?.user?.language_code || "en";
     setLang(lang);
 
-    /* ================= Insets ================= */
     const updateInsets = () => {
       const top = tgData.safeAreaInset?.top ?? 0;
       const bottom = tgData.safeAreaInset?.bottom ?? 0;
 
-      // если уже получили реальные значения, обновляем store
-      if (top !== 0 || bottom !== 0) {
-        setSettingsField("safeTop", top);
-        setSettingsField("safeBottom", bottom);
-        setSettingsField("heightView", window.innerHeight);
-        setSettingsField("widthView", window.innerWidth);
-        setSettingsField("loading", false); // теперь можно скрывать Loading
-      }
+      // сохраняем в любом случае, даже если 0
+      setSettingsField("safeTop", top);
+      setSettingsField("safeBottom", bottom);
+      setSettingsField("heightView", window.innerHeight);
+      setSettingsField("widthView", window.innerWidth);
+      setSettingsField("loading", false);
     };
 
-    // подписка на viewportChanged
     tgData.onEvent("viewportChanged", updateInsets);
+    updateInsets(); // сразу вызвать
 
-    // сразу вызываем, чтобы словить первое событие
-    updateInsets();
-
-    /* ================= Profi ================= */
-    if (user.id && user.isPro) {
-      loadProfi(user.id);
-    }
-
-    /* ================= Mode ================= */
+    if (user.id && user.isPro) loadProfi(user.id);
     setMode(user.isPro ? "homeProfi" : "home");
     setInitialized();
 

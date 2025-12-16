@@ -27,17 +27,8 @@ export default function App() {
 
   /* ================= Loading ================= */
   // ждём, пока safeTop и safeBottom реально изменятся с 0
-  const insetsNotReady = app.safeTop === 0 && app.safeBottom === 0;
-  const isLoading = !initialized || user.loading || app.loading || insetsNotReady;
-  const isLoadingAndNotZero = app.safeTop !== 0 && app.safeTop !== null
-
-
-  console.log(isLoadingAndNotZero);
-  console.log(isLoading);
-
-  if (isLoading) {
-    return <Loading>{text("loading")}</Loading>;
-  }
+  const isLoading = !initialized || user.loading || app.loading;
+  if (isLoading) return <Loading>{text("loading")}</Loading>;
 
   /* ================= Error ================= */
   if (user.error) {

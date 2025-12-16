@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 
 export const useAppSettings = create((set) => ({
-  safeTop: null,       // null = ещё не получили данные
-  safeBottom: null,
+  safeTop: 0,        // по умолчанию 0
+  safeBottom: 0,
   heightView: window.innerHeight,
   widthView: window.innerWidth,
 
