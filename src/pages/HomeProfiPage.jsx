@@ -14,7 +14,7 @@ export default function HomeProfiPage() {
       <h1>Тут у нас профи {profi.displayName}</h1>
       <img
         className="w-[80px] h-[80px] rounded-full"
-        src={profi.photoUrl}
+        src={profi.displayPhoto}
         alt="avatar"
       />
       <p>настройки, записи то се</p>
