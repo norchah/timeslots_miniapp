@@ -1,6 +1,6 @@
 // pages/pages.js
 import HomePage from "./HomePage.jsx";
-import SettingsPage from "./SettingsPage.jsx";
+
 import BecomeProfi from "./BecomeProfi.jsx";
 import HomeProfiPage from "./HomeProfiPage.jsx";
 import ProfiClientsPage from "./ProfiClientsPage.jsx";
@@ -11,7 +11,6 @@ import ProfiTagPage from "./ProfiTagPage.jsx";
 export const pages = {
   home: HomePage,
   homeProfi: HomeProfiPage,
-  settings: SettingsPage,
   becomeProfi: BecomeProfi,
   profiClients: ProfiClientsPage,
   booking: BookingPage,
