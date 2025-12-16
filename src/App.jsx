@@ -28,7 +28,7 @@ export default function App() {
 
   /* ================= Loading ================= */
 
-  if (!initialized || user.loading || app.loading) {
+  if (!initialized || user.loading || app.loading || app.safeTop !== 0 || app.safeTop !== null) {
     return <Loading>{text("loading")}</Loading>;
   }
 
