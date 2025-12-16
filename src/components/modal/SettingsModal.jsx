@@ -9,6 +9,8 @@ import BecomeProfiModal from "../../components/modal/BecomeProfiModal";
 import ButtonModal from "../buttons/buttonModal.jsx";
 import {useHaptic} from '../../hooks/useHaptic';
 import {usePageStore} from "../../stores/usePageStore";
+import ButtonOpenModal from "../buttons/ButtonOpenModal.jsx";
+import ButtonNavigate from "../buttons/ButtonNavigate.jsx";
 
 export default function SettingsModal() {
   const open = useModalStore((s) => s.open);
@@ -19,24 +21,29 @@ export default function SettingsModal() {
   const {impact} = useHaptic();
   const setMode = usePageStore((s) => s.setMode);
 
-  const handleProfiButton = () => {
-    impact('light');
 
-    if (isPro) {
-      // Уже Profi → просто переходим на страницу homeProfi
-      close();
-      setMode('homeProfi');
-    } else {
-      // Не Profi → открываем модалку регистрации
-      open(() => <BecomeProfiModal/>);
-    }
-  };
+  const button = isPro
+    ? <ButtonNavigate page={'homeProfi'}>{text('switchToProfi')}</ButtonNavigate>
+    : <ButtonOpenModal modal={<BecomeProfiModal/>}>{text('becomeProfi')}</ButtonOpenModal>
+
+  // const handleProfiButton = () => {
+  //   impact('light');
+  //
+  //   if (isPro) {
+  //     // Уже Profi → просто переходим на страницу homeProfi
+  //     close();
+  //     setMode('homeProfi');
+  //   } else {
+  //     // Не Profi → открываем модалку регистрации
+  //     open(() => <BecomeProfiModal/>);
+  //   }
+  // };
 
   const {username, name, lastname, photoUrl} = getUserDisplayData(user);
 
-  const buttonText = isPro
-    ? text('switchToProfi')
-    : text('becomeProfi');
+  // const buttonText = isPro
+  //   ? text('switchToProfi')
+  //   : text('becomeProfi');
 
   return (
     <div className="flex flex-col items-center w-full py-4 text-white">
@@ -58,10 +65,8 @@ export default function SettingsModal() {
 
           <EditDisplayNameForm/>
 
-          {/* Кнопка теперь вызывает правильный хендлер */}
-          <ButtonModal page={handleProfiButton}>
-            {buttonText}
-          </ButtonModal>
+          {button}
+
         </div>
       </main>
     </div>
