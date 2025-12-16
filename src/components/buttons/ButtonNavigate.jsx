@@ -1,14 +1,17 @@
 import React from 'react';
 import {useHaptic} from '../../hooks/useHaptic';
 import {usePageStore} from '../../stores/usePageStore';
+import {useModalStore} from "../../stores/useModalStore.js";
 
 export default function ButtonNavigate({children, page, className}) {
   const {impact} = useHaptic();
   const setMode = usePageStore((s) => s.setMode);
+  const reset = useModalStore((s) => s.reset);
 
   const handleClick = () => {
     impact('light');
     if (page) setMode(page);
+    reset()
   };
 
   return (
