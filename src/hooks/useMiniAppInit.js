@@ -48,6 +48,7 @@ export function useMiniAppInit(tgData) {
         loadProfi(user.id);
       }
       console.log('useMiniAppInit::::::: user.isPro', user.isPro)
+      console.log('useMiniAppInit::::::: user.id', user.id)
       setMode(user.isPro ? "homeProfi" : "home");
       setInitialized();
       setSettingsField("loading", false);
