@@ -8,16 +8,21 @@ import {useUserStore} from "../stores/useUserStore.js";
 
 export default function HomePage() {
   const text = useI18nStore((s) => s.text);
-  const isPro = useUserStore((s) => s.isPro);
+  const user = useUserStore((s) => s);
 
-  const button = isPro
+  const button = user.isPro
     ? <ButtonNavigate page={'homeProfi'}>{text('switchToProfi')}</ButtonNavigate>
     : <ButtonOpenModal modal={BecomeProfiModal}>{text('becomeProfi')}</ButtonOpenModal>
 
 
   return (
     <div>
-      <h1>Home Page для обычного пользователя</h1>
+      <h1>Тут у нас Пользователь {user.displayName}</h1>
+      <img
+        className="w-[80px] h-[80px] rounded-full"
+        src={user.displayPhoto}
+        alt="avatar"
+      />
       <p>Можно будет записаться то се</p>
       {button}
       <ButtonOpenModal modal={SettingsModal}>
