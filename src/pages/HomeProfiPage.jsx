@@ -8,16 +8,28 @@ export default function HomeProfiPage() {
     <div className='flex flex-col justify-center inline-flex items-center'>
       <h1 className='text-2xl'>Теперь ты профи</h1>
       <p>Скоро можно будет куда-то переключиться, на юзера например</p>
-      <ButtonNavigate
-        page='home'
-      >
-        Стать юзером
-      </ButtonNavigate>
-      <ButtonOpenModal
-        modal={ProfiClientsModal}
-      >
-        Мои клиенты
-      </ButtonOpenModal>
+      <ul>
+        <li>
+          <ButtonNavigate
+            page='home'
+          >
+            Стать юзером
+          </ButtonNavigate>
+        </li>
+        <li>
+          <ButtonOpenModal
+            modal={ProfiClientsModal}
+          >
+            Мои клиенты
+          </ButtonOpenModal>
+        </li>
+        <li>
+          <ButtonOpenModal>Управление тегами</ButtonOpenModal>
+        </li>
+        <li>
+          <ButtonOpenModal>тут будет расписание</ButtonOpenModal>
+        </li>
+      </ul>
     </div>
   );
 }
