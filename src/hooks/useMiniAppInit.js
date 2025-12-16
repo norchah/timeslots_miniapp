@@ -1,9 +1,9 @@
-import {useEffect, useRef} from "react";
-import {useAppSettings} from "../stores/useAppSettings";
-import {useI18nStore} from "../stores/useI18nStore.js";
-import {useUserStore} from "../stores/useUserStore.js";
-import {useProfiStore} from "../stores/useProfiStore.js";
-import {usePageStore} from "../stores/usePageStore.js";
+import { useEffect, useRef } from "react";
+import { useAppSettings } from "../stores/useAppSettings";
+import { useI18nStore } from "../stores/useI18nStore.js";
+import { useUserStore } from "../stores/useUserStore.js";
+import { useProfiStore } from "../stores/useProfiStore.js";
+import { usePageStore } from "../stores/usePageStore.js";
 
 export function useMiniAppInit(tgData) {
   const initializedRef = useRef(false);
@@ -25,7 +25,6 @@ export function useMiniAppInit(tgData) {
 
     /* ================= Telegram Init ================= */
     tgData.ready();
-
     if (tgData.platform !== "tdesktop") {
       tgData.disableVerticalSwipes?.();
       tgData.lockOrientation?.();
@@ -40,15 +39,24 @@ export function useMiniAppInit(tgData) {
 
     /* ================= Insets ================= */
     const updateInsets = () => {
-      setSettingsField("safeTop", tgData.safeAreaInset?.top ?? 0);
-      setSettingsField("safeBottom", tgData.safeAreaInset?.bottom ?? 0);
-      setSettingsField("heightView", window.innerHeight);
-      setSettingsField("widthView", window.innerWidth);
+      const top = tgData.safeAreaInset?.top ?? 0;
+      const bottom = tgData.safeAreaInset?.bottom ?? 0;
+
+      // если уже получили реальные значения, обновляем store
+      if (top !== 0 || bottom !== 0) {
+        setSettingsField("safeTop", top);
+        setSettingsField("safeBottom", bottom);
+        setSettingsField("heightView", window.innerHeight);
+        setSettingsField("widthView", window.innerWidth);
+        setSettingsField("loading", false); // теперь можно скрывать Loading
+      }
     };
 
-    // применяем сразу
-    updateInsets();
+    // подписка на viewportChanged
     tgData.onEvent("viewportChanged", updateInsets);
+
+    // сразу вызываем, чтобы словить первое событие
+    updateInsets();
 
     /* ================= Profi ================= */
     if (user.id && user.isPro) {
@@ -59,11 +67,6 @@ export function useMiniAppInit(tgData) {
     setMode(user.isPro ? "homeProfi" : "home");
     setInitialized();
 
-    // снимаем флаг загрузки
-    setSettingsField("loading", false);
-
-    return () => {
-      tgData.offEvent?.("viewportChanged", updateInsets);
-    };
+    return () => tgData.offEvent?.("viewportChanged", updateInsets);
   }, [tgData, user.loading, user.id]);
 }
