@@ -22,6 +22,7 @@ export function useMiniAppAuth(tgData) {
         setUserField('loading', false);
       }
     }
+
     login();
   }, [tgData]);
 }

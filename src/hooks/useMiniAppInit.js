@@ -126,9 +126,6 @@ export function useMiniAppInit(tgData) {
 
       // Помечаем, что инициализация завершена
       setInitialized();
-
-      // Убираем загрузку пользователя
-      user.setUserField("loading", false);
     };
 
     initApp();
