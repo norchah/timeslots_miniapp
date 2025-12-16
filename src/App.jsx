@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {pages} from "./pages/pages.js";
 import Loading from "./components/UI/loading.jsx";
-import ModalRoot from "./components/modal/ModalRoot";
 import {useTgData} from "./hooks/useTgData.js";
 import {useMiniAppInit} from "./hooks/useMiniAppInit.js";
 import {useMiniAppAuth} from "./hooks/useMiniAppAuth.js";
@@ -20,28 +19,8 @@ export default function App() {
   const mode = usePageStore((s) => s.mode);
   const initialized = usePageStore((s) => s.initialized);
 
-  // // Следим за получением реальных safe areas
-  // useEffect(() => {
-  //   if (tgData?.platform === "tdesktop") {
-  //     // Для десктопа safe areas всегда 0, считаем их готовыми сразу
-  //     setIsSafeAreasReady(true);
-  //   } else if (app.hasRealSafeAreas) {
-  //     // Для мобильных - когда получили не нулевые значения
-  //     setIsSafeAreasReady(true);
-  //   } else {
-  //     // Фоллбэк: если долго не приходят значения, используем эмуляцию
-  //     const timeout = setTimeout(() => {
-  //       console.log("Fallback: using estimated safe areas");
-  //       setIsSafeAreasReady(true);
-  //     }, 1000);
-  //
-  //     return () => clearTimeout(timeout);
-  //   }
-  // }, [app.hasRealSafeAreas, tgData?.platform]);
-
   /* ================= Loading ================= */
   const isLoading = !initialized || user.loading || app.loading
-  // const isLoading = !initialized || user.loading || app.loading || !isSafeAreasReady;
 
   if (isLoading) {
     return (

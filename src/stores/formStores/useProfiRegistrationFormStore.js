@@ -5,6 +5,7 @@ import {useUserStore} from "../useUserStore.js";
 import UserApi from "../../api/userApi.js";
 import {useProfiStore} from "../useProfiStore.js";
 import {usePageStore} from "../usePageStore.js";
+import {useModalStore} from "../useModalStore.js";
 
 
 export const useProfiRegistrationFormStore = createFormStore({
@@ -32,6 +33,7 @@ export const useProfiRegistrationFormStore = createFormStore({
     const setUserField = useUserStore.getState().setUserField;
     const loadProfi = useProfiStore.getState().loadProfi;
     const setMode = usePageStore.getState().setMode;
+    const reset = useModalStore.getState().reset;
 
     setUserField('displayName', values.displayName);
     setUserField('displayLastname', values.displayLastname);
@@ -41,5 +43,6 @@ export const useProfiRegistrationFormStore = createFormStore({
     await loadProfi({userId});
 
     setMode('homeProfi');
+    reset()
   }
 });
