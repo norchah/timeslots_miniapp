@@ -16,7 +16,7 @@ export default function ProfiClientsModal() {
         <div key={client.id}>
           <p>id: {client.id}</p>
           <p>имя: {client.customName}</p>
-          <p>фамилия: {client.Lastname}</p>
+          <p>фамилия: {client.customLastname}</p>
           <p>заметка: {client.notes}</p>
         </div>
       ))}
