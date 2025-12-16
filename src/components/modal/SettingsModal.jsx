@@ -4,10 +4,7 @@ import EditDisplayNameForm from "../../components/forms/EditDisplayNameForm";
 import {useUserStore} from "../../stores/useUserStore";
 import {useI18nStore} from "../../stores/useI18nStore";
 import {useIsPro} from '../../stores/useProfiSelectors';
-import {useModalStore} from "../../stores/useModalStore";
 import BecomeProfiModal from "../../components/modal/BecomeProfiModal";
-import {useHaptic} from '../../hooks/useHaptic';
-import {usePageStore} from "../../stores/usePageStore";
 import ButtonOpenModal from "../buttons/ButtonOpenModal.jsx";
 import ButtonNavigate from "../buttons/ButtonNavigate.jsx";
 
@@ -42,7 +39,6 @@ export default function SettingsModal() {
           <EditDisplayNameForm/>
 
           {button}
-
         </div>
       </main>
     </div>

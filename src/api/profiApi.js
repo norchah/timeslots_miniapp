@@ -18,12 +18,13 @@ export default class ProfiApi {
       display_name: data.displayName,
       display_lastname: data.displayLastname,
     };
-    console.log('PROFI API, PAYLOAD::::::::::::::   ', payload)
+    console.log('PROFI API, CREATE - PAYLOAD::::::::::::::   ', payload)
     const res = await this.api.post('/', payload);
     return camelcaseKeys(res.data, {deep: true});
   }
 
   async getById(userId) {
+    console.log('PROFI API, GET_BY_ID - PAYLOAD::::::::::::::   ', payload)
     const res = await this.api.get(`/${userId}/`);
     return camelcaseKeys(res.data, {deep: true});
   }
