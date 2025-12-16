@@ -1,23 +1,20 @@
 import React from 'react';
-import {useHaptic} from '../../hooks/useHaptic';
 import {useModalStore} from '../../stores/useModalStore';
+import ButtonBase from './ButtonBase.jsx';
 
 export default function ButtonOpenModal({children, modal, className}) {
-  const {impact} = useHaptic();
   const open = useModalStore((s) => s.open);
 
   const handleClick = () => {
-    impact('light'); // тактильная отдача
     if (modal) open(modal);
   };
 
   return (
-    <button onClick={handleClick} className={`
-        mt-2 py-2 px-1 rounded-xl bg-blue-500 text-white
-        transition-all active:scale-[0.97] text-sm
-        ${className || ''}
-      `}>
+    <ButtonBase
+      onClick={handleClick}
+      className={className}
+    >
       {children}
-    </button>
+    </ButtonBase>
   );
 }

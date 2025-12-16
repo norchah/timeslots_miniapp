@@ -1,20 +1,14 @@
 import React from 'react';
-import {useHaptic} from '../../hooks/useHaptic';
+import ButtonBase from './ButtonBase.jsx';
 
 export default function ButtonSubmit({children, className}) {
-  const {impact} = useHaptic();
-
   return (
-    <button
-      type='submit'
-      onClick={() => impact('light')}
-      className={`
-        mt-2 py-2 px-1 rounded-xl bg-blue-500 text-white
-        font-medium transition-all active:scale-[0.97]
-        ${className || ''}
-      `}
+    <ButtonBase
+      type="submit"
+      haptic="medium"
+      className={className}
     >
       {children}
-    </button>
+    </ButtonBase>
   );
 }
