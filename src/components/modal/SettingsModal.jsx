@@ -12,40 +12,17 @@ import ButtonOpenModal from "../buttons/ButtonOpenModal.jsx";
 import ButtonNavigate from "../buttons/ButtonNavigate.jsx";
 
 export default function SettingsModal() {
-  const open = useModalStore((s) => s.open);
-  const close = useModalStore((s) => s.close);
   const isPro = useIsPro();
   const user = useUserStore();
   const text = useI18nStore((s) => s.text);
-  const {impact} = useHaptic();
-  const setMode = usePageStore((s) => s.setMode);
-
+  const {username, name, lastname, photoUrl} = getUserDisplayData(user);
 
   const button = isPro
     ? <ButtonNavigate page={'homeProfi'}>{text('switchToProfi')}</ButtonNavigate>
     : <ButtonOpenModal modal={BecomeProfiModal}>{text('becomeProfi')}</ButtonOpenModal>
 
-  // const handleProfiButton = () => {
-  //   impact('light');
-  //
-  //   if (isPro) {
-  //     // Уже Profi → просто переходим на страницу homeProfi
-  //     close();
-  //     setMode('homeProfi');
-  //   } else {
-  //     // Не Profi → открываем модалку регистрации
-  //     open(() => <BecomeProfiModal/>);
-  //   }
-  // };
-
-  const {username, name, lastname, photoUrl} = getUserDisplayData(user);
-
-  // const buttonText = isPro
-  //   ? text('switchToProfi')
-  //   : text('becomeProfi');
-
   return (
-    <div className="flex flex-col items-center w-full py-4 text-white">
+    <div className="flex flex-col items-center w-full py-4 text-white outline outline-white">
       <header className="mb-4">
         <h1 className="text-2xl">{text('settings')}</h1>
       </header>
