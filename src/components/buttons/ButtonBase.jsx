@@ -28,7 +28,7 @@ export default function ButtonBase(
       disabled={disabled}
       onClick={handleClick}
       className={`
-        mt-2 py-2 px-4 rounded-xl
+        mt-2 py-2 px-4 rounded-xl w-20 h-20
         bg-blue-500 text-white font-medium
         transition-all
         active:scale-[0.97]
