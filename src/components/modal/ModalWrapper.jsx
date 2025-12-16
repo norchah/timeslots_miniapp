@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import {useModalStore} from "../../stores/useModalStore";
 
-export default function ModalShell({children, isTop}) {
+export default function ModalWrapper({children, isTop}) {
   const close = useModalStore((s) => s.close);
   const startY = useRef(0);
   const [offset, setOffset] = useState(0);

@@ -16,5 +16,5 @@ export const useModalStore = create((set, get) => ({
     }));
   },
 
-  closeAll: () => set({stack: []}),
+  reset: () => set({ stack: [] }),
 }));

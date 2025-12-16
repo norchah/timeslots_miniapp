@@ -1,43 +1,39 @@
+import React from "react";
 import {pages} from "./pages/pages.js";
-import React, {useEffect, useState} from "react";
+
 import Loading from "./components/UI/loading.jsx";
+import ModalRoot from "./components/modal/ModalRoot";
+
 import {useTgData} from "./hooks/useTgData.js";
 import {useMiniAppInit} from "./hooks/useMiniAppInit.js";
 import {useMiniAppAuth} from "./hooks/useMiniAppAuth.js";
+
 import {useUserStore} from "./stores/useUserStore.js";
 import {useAppSettings} from "./stores/useAppSettings.js";
 import {useI18nStore} from "./stores/useI18nStore.js";
-import {useProfiStore} from "./stores/useProfiStore.js";
-import ModalRoot from "./components/modal/ModalRoot";
-
+import {usePageStore} from "./stores/usePageStore.js";
 
 export default function App() {
   const {tgData} = useTgData();
-  useMiniAppAuth(tgData)
-  useMiniAppInit(tgData)
 
-  const [page, setPage] = useState(null); // пока null, чтобы не рендерить ничего
+  useMiniAppAuth(tgData);
+  useMiniAppInit(tgData);
+
   const user = useUserStore();
   const app = useAppSettings();
+
   const text = useI18nStore((s) => s.text);
-  const profi = useProfiStore((s) => s.profi);
-  const profiLoading = useProfiStore((s) => s.loading);
+  const mode = usePageStore((s) => s.mode);
+  const initialized = usePageStore((s) => s.initialized);
 
+  /* ================= Loading ================= */
 
-  // После загрузки user устанавливаем страницу
-  useEffect(() => {
-    if (!user.loading && !profiLoading && user.id && page === null) {
-      setPage(user.isPro ? 'homeProfi' : 'home');
-    }
-  }, [user.loading, profiLoading, user.id, user.isPro, page]);
-
-  // Показываем лоадер, пока не готов user или app
-  // Если данные еще не загрузились
-  if (user.loading || app.loading || page == null) {
-    return <Loading>{text('loading')}</Loading>;
+  if (!initialized || user.loading || app.loading) {
+    return <Loading>{text("loading")}</Loading>;
   }
 
-  // Ошибка
+  /* ================= Error ================= */
+
   if (user.error) {
     return (
       <div className="bg-slate-800 text-white h-screen flex items-center justify-center">
@@ -46,26 +42,30 @@ export default function App() {
     );
   }
 
-  const PageComponent = pages[page];
+  /* ================= Page ================= */
 
-  // На всякий случай
+  const PageComponent = pages[mode];
+
   if (!PageComponent) {
-    return <div>Page not found: {page}</div>;
+    return <div>Page not found: {mode}</div>;
   }
+
+  /* ================= Render ================= */
 
   return (
     <>
       <div
         className="m-auto py-5 flex flex-col items-center justify-center mt-[40px]"
-        style={{paddingTop: `${app.safeTop}px`, paddingBottom: `${app.safeBottom}px`, width: `${app.widthView}px`}}>
-        <PageComponent
-          navigate={setPage}
-          tgData={tgData}
-        />
+        style={{
+          paddingTop: `${app.safeTop}px`,
+          paddingBottom: `${app.safeBottom}px`,
+          width: `${app.widthView}px`,
+        }}
+      >
+        <PageComponent tgData={tgData}/>
       </div>
 
       <ModalRoot/>
     </>
-
-  )
+  );
 }
