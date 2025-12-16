@@ -24,5 +24,6 @@ export function useMiniAppAuth(tgData) {
     }
 
     login();
+    console.log('useMiniAppAuth:::::::: after login. end or hook', tgData)
   }, [tgData]);
 }

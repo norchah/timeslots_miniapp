@@ -65,7 +65,7 @@ export function useMiniAppInit(tgData) {
 
     setMode(user.isPro ? "homeProfi" : "home");
     setInitialized();
-
+    console.log('useMiniAppInit :::::  end of hook, before return')
     return () => {
       tgData.offEvent?.("viewportChanged", updateInsets);
     };
