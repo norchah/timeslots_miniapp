@@ -6,7 +6,6 @@ import {useI18nStore} from "../../stores/useI18nStore";
 import {useIsPro} from '../../stores/useProfiSelectors';
 import {useModalStore} from "../../stores/useModalStore";
 import BecomeProfiModal from "../../components/modal/BecomeProfiModal";
-import ButtonModal from "../buttons/buttonModal.jsx";
 import {useHaptic} from '../../hooks/useHaptic';
 import {usePageStore} from "../../stores/usePageStore";
 import ButtonOpenModal from "../buttons/ButtonOpenModal.jsx";
