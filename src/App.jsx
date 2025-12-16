@@ -20,7 +20,7 @@ export default function App() {
   const initialized = usePageStore((s) => s.initialized);
 
   /* ================= Loading ================= */
-  const isLoading = !initialized || user.loading || app.loading
+  const isLoading = !initialized || user.loading || app.loading || user.id
 
   if (isLoading) {
     return (
