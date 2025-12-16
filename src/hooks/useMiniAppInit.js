@@ -60,5 +60,5 @@ export function useMiniAppInit(tgData) {
       tgData.offEvent?.("viewportChanged", updateInsets);
       clearTimeout(initTimeout);
     };
-  }, [tgData]);
+  }, [tgData, user]);
 }
