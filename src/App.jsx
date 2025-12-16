@@ -26,7 +26,7 @@ export default function App() {
   });
 
   /* ================= Loading ================= */
-  const isLoading = !initialized || user.loading || app.loading || user.id
+  const isLoading = !initialized || user.loading
 
   if (isLoading) {
     return (
