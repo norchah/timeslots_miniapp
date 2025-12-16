@@ -13,10 +13,8 @@ export default function HomePage() {
   const button = user.isPro
     ? <ButtonNavigate page={'homeProfi'}>{text('switchToProfi')}</ButtonNavigate>
     : <ButtonOpenModal modal={BecomeProfiModal}>{text('becomeProfi')}</ButtonOpenModal>
-
-
   return (
-    <div>
+    <div className='flex flex-col justify-center inline-flex items-center px-3'>
       <h1>Тут у нас Пользователь {user.displayName}</h1>
       <img
         className="w-[80px] h-[80px] rounded-full"
