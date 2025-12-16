@@ -18,7 +18,7 @@ export default function SettingsModal() {
     : <ButtonOpenModal modal={BecomeProfiModal}>{text('becomeProfi')}</ButtonOpenModal>
 
   return (
-    <div className="flex flex-col items-center w-full py-4 text-white outline outline-white">
+    <div className="flex flex-col items-center w-full py-4 text-white">
       <header className="mb-4">
         <h1 className="text-2xl">{text('settings')}</h1>
       </header>
@@ -34,9 +34,7 @@ export default function SettingsModal() {
           <p>{text('username')}: {username}</p>
           <p>{text('name')}: {user.displayName || name}</p>
           <p>{text('lastname')}: {user.displayLastname || lastname}</p>
-
           <EditDisplayNameForm/>
-
           {button}
         </div>
       </main>
