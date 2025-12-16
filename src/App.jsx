@@ -55,7 +55,7 @@ export default function App() {
   return (
     <>
       <div
-        className="m-auto py-5 flex flex-col items-center justify-center mt-[40px]"
+        className="m-auto py-5 flex flex-col items-center justify-center mt-[40px] outline outline-red-300"
         style={{
           paddingTop: `${app.safeTop}px`,
           paddingBottom: `${app.safeBottom}px`,
