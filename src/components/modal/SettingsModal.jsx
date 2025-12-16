@@ -13,7 +13,8 @@ export default function SettingsModal() {
   const user = useUserStore();
   const text = useI18nStore((s) => s.text);
   const {username, name, lastname, photoUrl} = getUserDisplayData(user);
-
+  console.log('SettingsModal:::::: is PRO?', isPro)
+  console.log('SettingsModal:::::: user.isPro?', user.isPro)
   const button = isPro
     ? <ButtonNavigate page={'homeProfi'}>{text('switchToProfi')}</ButtonNavigate>
     : <ButtonOpenModal modal={BecomeProfiModal}>{text('becomeProfi')}</ButtonOpenModal>

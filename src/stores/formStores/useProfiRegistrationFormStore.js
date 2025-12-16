@@ -24,7 +24,7 @@ export const useProfiRegistrationFormStore = createFormStore({
     const profiApi = new ProfiApi();
     const userApi = new UserApi();
 
-    await profiApi.create({
+    const res = await profiApi.create({
       userId,                     // сюда добавляем id
       displayName: values.displayName,
       displayLastname: values.displayLastname,

@@ -8,14 +8,6 @@ export const useAppSettings = create((set) => ({
   loading: true,
   error: null,
 
-  // Флаг, что мы получили реальные safe-зоны (не нулевые)
-  hasRealSafeAreas: false,
 
   setSettingsField: (field, value) => set({ [field]: value }),
-  setSafeAreas: (top, bottom) => set({
-    safeTop: top,
-    safeBottom: bottom,
-    // Помечаем, что получили реальные значения, если хотя бы одно не нулевое
-    hasRealSafeAreas: !!(top || bottom)
-  }),
 }));
