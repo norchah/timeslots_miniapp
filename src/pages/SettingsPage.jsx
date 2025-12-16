@@ -1,10 +1,13 @@
 import React from 'react';
 import {getUserDisplayData} from "../utils/utils";
 import EditDisplayNameForm from "../components/forms/EditDisplayNameForm";
-import ButtonMain from "../components/buttons/buttonMain";
+
 import {useUserStore} from "../stores/useUserStore";
 import {useI18nStore} from "../stores/useI18nStore";
-import {useIsPro, useProfiDisplayName} from '../stores/useProfiSelectors';
+import {useIsPro} from '../stores/useProfiSelectors';
+import ButtonNavigate from "../components/buttons/ButtonNavigate.jsx";
+import ButtonOpenModal from "../components/buttons/buttonModal.jsx";
+import BecomeProfiModal from "../components/modal/BecomeProfiModal.jsx";
 
 export default function SettingsPage() {
   const user = useUserStore();
@@ -14,9 +17,9 @@ export default function SettingsPage() {
   const {username, name, lastname, photoUrl} =
     getUserDisplayData(user);
 
-  // Определяем страницу для кнопки
-  const buttonPage = isPro ? 'homeProfi' : 'becomeProfi';
-  const buttonText = isPro ? text('switchToProfi') : text('becomeProfi');
+  const button = isPro
+    ? <ButtonNavigate page="homeProfi">{text('switchToProfi')}</ButtonNavigate>
+    : <ButtonOpenModal modal={BecomeProfiModal}>{text('becomeProfi')}</ButtonOpenModal>;
 
 
   return (
@@ -41,13 +44,7 @@ export default function SettingsPage() {
           {/* 🔥 форма теперь автономная */}
           <EditDisplayNameForm/>
 
-          <ButtonMain
-            navigate={navigate}
-            page={buttonPage}
-            tgData={tgData}
-          >
-            {buttonText}
-          </ButtonMain>
+          {button}
         </div>
       </main>
     </div>
