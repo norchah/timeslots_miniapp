@@ -10,10 +10,11 @@ import BecomeProfiModal from "../../components/modal/BecomeProfiModal";
 import ButtonModal from "../buttons/buttonModal.jsx";
 import {useHaptic} from '../../hooks/useHaptic';
 
-const close = useModalStore((s) => s.close);
+
 
 export default function SettingsModal({navigate}) {
   const open = useModalStore((s) => s.open);
+  const close = useModalStore((s) => s.close);
   const isPro = useIsPro();
   const user = useUserStore();
   const text = useI18nStore((s) => s.text);
