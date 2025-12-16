@@ -38,7 +38,7 @@ export default function ModalWrapper({children}) {
 
       {/* Modal */}
       <div
-        className="relative w-full bg-gray-700 rounded-t-2xl transition-transform"
+        className="relative w-full bg-gray-700 rounded-t-2xl transition-transform mt-1"
         style={{transform: `translateY(${offset}px)`, height: "90vh"}}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
@@ -50,7 +50,7 @@ export default function ModalWrapper({children}) {
           onClick={handleClose}
           className="absolute top-3 right-4 text-slate-400 text-xl"
         >
-          ✕
+          ❌
         </button>
 
         <div className="h-full overflow-y-auto p-4">{children}</div>
