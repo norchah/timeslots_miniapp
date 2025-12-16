@@ -50,6 +50,7 @@ export default function App() {
   }
 
   /* ================= Render ================= */
+  console.log('APP, app.safeTop::::::::::', app.safeTop)
   return (
     <>
       {/* Модальные окна */}
