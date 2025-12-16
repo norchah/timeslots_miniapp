@@ -15,12 +15,12 @@ export const useProfiRegistrationFormStore = createFormStore({
     // acceptPolicy: false,
     // inn: '',
     // profiType: null,
-    photo: null,
+    displayPhoto: null,
   },
 
   validate: validateProfiRegistration,
 
-  async submit(values, userId, navigate) {
+  async submit(values, userId) {
     const profiApi = new ProfiApi();
     const userApi = new UserApi();
 
@@ -41,7 +41,7 @@ export const useProfiRegistrationFormStore = createFormStore({
 
     await userApi.updateIsPro(userId, true)
     setUserField('isPro', true);
-    await loadProfi({userId});
+    await loadProfi(userId);
 
     setMode('homeProfi');
     reset()

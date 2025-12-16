@@ -23,7 +23,7 @@ export default function HomeProfiPage() {
           <ButtonNavigate
             page='home'
           >
-          Как пользователя
+            Как пользователя
           </ButtonNavigate>
         </li>
         <li>
