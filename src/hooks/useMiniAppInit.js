@@ -47,13 +47,13 @@ export function useMiniAppInit(tgData) {
       if (user.id && user.isPro) {
         loadProfi(user.id);
       }
-
+      console.log('useMiniAppInit::::::: user.isPro', user.isPro)
       setMode(user.isPro ? "homeProfi" : "home");
       setInitialized();
       setSettingsField("loading", false);
     };
 
-    const initTimeout = setTimeout(completeInitialization, 100);
+    const initTimeout = setTimeout(completeInitialization, 300);
 
     return () => {
       tgData.offEvent?.("viewportChanged", updateInsets);

@@ -9,13 +9,11 @@ import ButtonOpenModal from "../buttons/ButtonOpenModal.jsx";
 import ButtonNavigate from "../buttons/ButtonNavigate.jsx";
 
 export default function SettingsModal() {
-  const isPro = useIsPro();
   const user = useUserStore();
   const text = useI18nStore((s) => s.text);
   const {username, name, lastname, photoUrl} = getUserDisplayData(user);
-  console.log('SettingsModal:::::: is PRO?', isPro)
-  console.log('SettingsModal:::::: user.isPro?', user.isPro)
-  const button = isPro
+
+  const button = user.isPro
     ? <ButtonNavigate page={'homeProfi'}>{text('switchToProfi')}</ButtonNavigate>
     : <ButtonOpenModal modal={BecomeProfiModal}>{text('becomeProfi')}</ButtonOpenModal>
 

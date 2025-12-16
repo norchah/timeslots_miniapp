@@ -1,9 +1,6 @@
 // stores/useProfiSelectors.js
 import {useProfiStore} from './useProfiStore';
 
-/** Является ли пользователь профи */
-export const useIsPro = () =>
-  useProfiStore((s) => Boolean(s.profi));
 
 /** Сам объект профи */
 export const useProfi = () =>
