@@ -51,7 +51,7 @@ export function useMiniAppInit(tgData) {
       console.log('useMiniAppInit::::::: user.id', user.id)
       setMode(user.isPro ? "homeProfi" : "home");
       setInitialized();
-      setSettingsField("loading", false);
+      user.setUserField("loading", false);
     };
 
     const initTimeout = setTimeout(completeInitialization, 300);
