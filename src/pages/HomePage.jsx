@@ -17,7 +17,8 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>Добро пожаловать в TimeSlots</h1>
+      <h1>Home Page для обычного пользователя</h1>
+      <p>Можно будет записаться то се</p>
       {button}
       <ButtonOpenModal modal={SettingsModal}>
         Настройки

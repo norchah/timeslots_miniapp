@@ -8,8 +8,8 @@ import ProfiScheduleModal from "../components/modal/ProfiScheduleModal.jsx";
 export default function HomeProfiPage() {
   return (
     <div className='flex flex-col justify-center inline-flex items-center'>
-      <h1 className='text-2xl'>Теперь ты профи</h1>
-      <p>Скоро можно будет куда-то переключиться, на юзера например</p>
+      <h1>Home Page для пользователя предоставляющего услуги</h1>
+      <p>настройки, записи то се</p>
       <ul>
         <li>
           <ButtonNavigate
