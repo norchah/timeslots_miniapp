@@ -1,4 +1,3 @@
-// components/modals/SettingsModal.jsx
 import React from 'react';
 import {getUserDisplayData} from "../../utils/utils";
 import EditDisplayNameForm from "../../components/forms/EditDisplayNameForm";
@@ -9,32 +8,31 @@ import {useModalStore} from "../../stores/useModalStore";
 import BecomeProfiModal from "../../components/modal/BecomeProfiModal";
 import ButtonModal from "../buttons/buttonModal.jsx";
 import {useHaptic} from '../../hooks/useHaptic';
+import {usePageStore} from "../../stores/usePageStore";
 
-
-
-export default function SettingsModal({navigate}) {
+export default function SettingsModal() {
   const open = useModalStore((s) => s.open);
   const close = useModalStore((s) => s.close);
   const isPro = useIsPro();
   const user = useUserStore();
   const text = useI18nStore((s) => s.text);
   const {impact} = useHaptic();
+  const setMode = usePageStore((s) => s.setMode);
 
   const handleProfiButton = () => {
+    impact('light');
 
     if (isPro) {
-      // Уже Profi → просто переходим на страницу
+      // Уже Profi → просто переходим на страницу homeProfi
       close();
-      navigate('homeProfi');
+      setMode('homeProfi');
     } else {
       // Не Profi → открываем модалку регистрации
-      open(() => <BecomeProfiModal navigate={navigate}/>);
+      open(() => <BecomeProfiModal/>);
     }
-    impact('light');
-  }
+  };
 
-  const {username, name, lastname, photoUrl} =
-    getUserDisplayData(user);
+  const {username, name, lastname, photoUrl} = getUserDisplayData(user);
 
   const buttonText = isPro
     ? text('switchToProfi')
@@ -60,7 +58,7 @@ export default function SettingsModal({navigate}) {
 
           <EditDisplayNameForm/>
 
-          {/* Кнопка теперь открывает следующую модалку */}
+          {/* Кнопка теперь вызывает правильный хендлер */}
           <ButtonModal page={handleProfiButton}>
             {buttonText}
           </ButtonModal>

@@ -1,6 +1,5 @@
 import React, {useEffect} from "react";
 import {TextInput} from "./inputs/textInput";
-import ButtonMain from "../buttons/buttonMain";
 import {useUserStore} from "../../stores/useUserStore";
 import {useEditProfileFormStore} from "../../stores/formStores/useEditProfileFormStore";
 import ButtonSubmit from "../buttons/buttonSubmit.jsx";
@@ -25,7 +24,7 @@ export default function EditDisplayNameForm() {
       displayName: user.displayName || '',
       displayLastname: user.displayLastname || '',
     });
-  }, [user.id]);
+  }, [user.displayName, user.displayLastname, user.id]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -55,7 +54,7 @@ export default function EditDisplayNameForm() {
         <p className="text-red-500 text-sm">{errors.form}</p>
       )}
 
-      <ButtonSubmit type={'submit'} disabled={loading}>
+      <ButtonSubmit type="submit" disabled={loading}>
         {loading ? 'Сохранение…' : 'Сохранить'}
       </ButtonSubmit>
     </form>

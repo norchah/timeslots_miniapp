@@ -1,12 +1,13 @@
 import {useProfiRegistrationFormStore} from "../../stores/formStores/useProfiRegistrationFormStore.js";
 import {TextInput} from "./inputs/textInput.jsx";
 import {useUserStore} from "../../stores/useUserStore.js";
-import ButtonMain from "../buttons/buttonMain.jsx";
 import ButtonSubmit from "../buttons/buttonSubmit.jsx";
+import {usePageStore} from "../../stores/usePageStore.js";
 
+export default function ProfiRegistrationForm() {
+  const id = useUserStore((s) => s.id);
+  const setMode = usePageStore((s) => s.setMode);
 
-export default function ProfiRegistrationForm({navigate}) {
-  const id = useUserStore((s) => s.id)
   const {
     values,
     errors,
@@ -15,11 +16,20 @@ export default function ProfiRegistrationForm({navigate}) {
     submit,
   } = useProfiRegistrationFormStore();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await submit(id);
+      // После успешной регистрации Profi → переключаем страницу
+      setMode('homeProfi');
+    } catch (err) {
+      console.error("Registration error:", err);
+    }
+  };
+
   return (
-    <form onSubmit={(e) => {
-      e.preventDefault();
-      submit(id, navigate);
-    }}>
+    <form onSubmit={handleSubmit}>
       <TextInput
         label="Имя"
         value={values.displayName}
@@ -33,13 +43,7 @@ export default function ProfiRegistrationForm({navigate}) {
         onChange={(v) => setField('displayLastname', v)}
       />
 
-      {/*<Checkbox*/}
-      {/*  checked={values.acceptPolicy}*/}
-      {/*  error={errors.acceptPolicy}*/}
-      {/*  onChange={(v) => setField('acceptPolicy', v)}*/}
-      {/*/>*/}
-
-      <ButtonSubmit type={'submit'} disabled={loading}>
+      <ButtonSubmit type="submit" disabled={loading}>
         {loading ? 'Регистрация…' : 'Зарегистрироваться'}
       </ButtonSubmit>
     </form>
