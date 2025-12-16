@@ -26,8 +26,9 @@ export default function App() {
   const initialized = usePageStore((s) => s.initialized);
 
   /* ================= Loading ================= */
-  const isLoading =
-    !initialized || user.loading || app.loading || app.safeTop === null;
+  // ждём, пока safeTop и safeBottom реально изменятся с 0
+  const insetsNotReady = app.safeTop === 0 && app.safeBottom === 0;
+  const isLoading = !initialized || user.loading || app.loading || insetsNotReady;
 
   if (isLoading) {
     return <Loading>{text("loading")}</Loading>;
@@ -44,19 +45,13 @@ export default function App() {
 
   /* ================= Page ================= */
   const PageComponent = pages[mode];
-
-  if (!PageComponent) {
-    return <div>Page not found: {mode}</div>;
-  }
+  if (!PageComponent) return <div>Page not found: {mode}</div>;
 
   /* ================= Render ================= */
-  console.log('APP, app.safeTop::::::::::', app.safeTop)
   return (
     <>
-      {/* Модальные окна */}
       <ModalRoot/>
 
-      {/* Основная разметка */}
       <div
         className="flex flex-col items-center justify-center py-5 mt-[40px]"
         style={{

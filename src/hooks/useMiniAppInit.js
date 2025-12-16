@@ -19,14 +19,11 @@ export function useMiniAppInit(tgData) {
 
   useEffect(() => {
     if (!tgData || initializedRef.current) return;
-
-    // ждём пока user загрузится
-    if (user.loading) return;
+    if (user.loading) return; // ждём пока user загрузится
 
     initializedRef.current = true;
 
     /* ================= Telegram Init ================= */
-
     tgData.ready();
 
     if (tgData.platform !== "tdesktop") {
@@ -42,30 +39,23 @@ export function useMiniAppInit(tgData) {
     setLang(lang);
 
     /* ================= Insets ================= */
-
     const updateInsets = () => {
-      const safeTop = tgData.safeAreaInset?.top ?? 0;
-      const safeBottom = tgData.safeAreaInset?.bottom ?? 0;
-      setSettingsField("safeTop", safeTop);
-      setSettingsField("safeBottom", safeBottom);
+      setSettingsField("safeTop", tgData.safeAreaInset?.top ?? 0);
+      setSettingsField("safeBottom", tgData.safeAreaInset?.bottom ?? 0);
       setSettingsField("heightView", window.innerHeight);
       setSettingsField("widthView", window.innerWidth);
     };
 
-    // сразу применяем
+    // применяем сразу
     updateInsets();
-
-    // подписываемся на изменения viewport
     tgData.onEvent("viewportChanged", updateInsets);
 
     /* ================= Profi ================= */
-
     if (user.id && user.isPro) {
       loadProfi(user.id);
     }
 
     /* ================= Mode ================= */
-
     setMode(user.isPro ? "homeProfi" : "home");
     setInitialized();
 
