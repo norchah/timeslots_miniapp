@@ -76,8 +76,6 @@ export default function App() {
 
   /* ================= Render ================= */
   return (
-    <>
-      <ModalRoot/>
 
       <div
         className="flex flex-col items-center justify-center min-h-screen"
@@ -96,6 +94,5 @@ export default function App() {
           <PageComponent tgData={tgData}/>
         </div>
       </div>
-    </>
   );
 }
