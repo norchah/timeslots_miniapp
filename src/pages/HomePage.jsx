@@ -20,7 +20,8 @@ export default function HomePage() {
       <h1>Тут у нас Пользователь {user.displayName}</h1>
       <img
         className="w-[80px] h-[80px] rounded-full"
-        src={user.displayPhoto}
+        src={user.photoUrl}
+        // src={user.displayPhoto}
         alt="avatar"
       />
       <p>Можно будет записаться то се</p>
