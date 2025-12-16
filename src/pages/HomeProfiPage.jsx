@@ -14,7 +14,7 @@ export default function HomeProfiPage() {
         Стать юзером
       </ButtonNavigate>
       <ButtonOpenModal
-        page={ProfiClientsModal}
+        modal={ProfiClientsModal}
       >
         Мои клиенты
       </ButtonOpenModal>
