@@ -21,8 +21,23 @@ export default class TagApi {
     return camelcaseKeys(res.data, {deep: true});
   }
 
-  async getById(userId) {
-    const res = await this.api.get(`/${userId}/`);
+  async getById(userId, id) {
+    const res = await this.api.get(`/${userId}/${id}/`);
     return camelcaseKeys(res.data, {deep: true});
   }
+
+  async delete(userId, id) {
+    const res = await this.api.delete(`/${userId}/${id}/`);
+    return camelcaseKeys(res.data, {deep: true});
+  }
+
+
+  async patch(userId, id, tagName) {
+    const payload = {
+      tag_name: tagName,
+    }
+    const res = await this.api.patch(`/${userId}/${id}/`, payload);
+    return camelcaseKeys(res.data, {deep: true});
+  }
+
 }

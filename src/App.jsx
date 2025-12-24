@@ -50,7 +50,7 @@ export default function App() {
   return (
     <>
       <div
-        className="flex flex-col items-center justify-center py-5 mt-[40px]"
+        className="flex flex-col items-center justify-center py-5 mt-[40px] outline outline-white"
         style={{
           paddingTop: `${app.safeTop}px`,
           paddingBottom: `${app.safeBottom}px`,
